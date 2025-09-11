@@ -1,0 +1,4 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-deshpande-secevent-http-multi-set-push.md apoorva.deshpande@okta.com aaron@parecki.com
+draft-todo-yourname-protocol.md apps.desh@gmail.com
