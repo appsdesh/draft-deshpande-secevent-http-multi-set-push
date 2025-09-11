@@ -9,7 +9,7 @@ Expires: 15 March 2026                                 11 September 2025
 
 
  Push-Based Delivery For Multiple Security Event Token (SET) Using HTTP
-              draft-deshpande-secevent-http-multi-set-push
+          draft-deshpande-secevent-http-multi-set-push-latest
 
 Abstract
 
@@ -24,10 +24,11 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://drafts.aaronpk.com/draft-deshpande-secevent-http-multi-push/
-   draft-deshpande-secevent-http-multi-push.html.  Status information
-   for this document may be found at https://datatracker.ietf.org/doc/
-   draft-deshpande-secevent-http-multi-set/.
+   https://appsdesh.github.io/draft-deshpande-secevent-http-multi-set-
+   push/draft-deshpande-secevent-http-multi-set-push.html.  Status
+   information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-deshpande-secevent-http-multi-
+   set-push/.
 
    Discussion of this document takes place on the Security Events
    Working Group mailing list (mailto:id-event@ietf.org), which is
@@ -35,7 +36,8 @@ About This Document
    Subscribe at https://www.ietf.org/mailman/listinfo/id-event/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/aaronpk/draft-deshpande-secevent-http-multi-push.
+   https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-
+   push.
 
 Status of This Memo
 
