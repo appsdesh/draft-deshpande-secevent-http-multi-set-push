@@ -18,8 +18,8 @@ venue:
   type: "Working Group"
   mail: "id-event@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/id-event/"
-  github: "aaronpk/draft-deshpande-secevent-http-multi-push"
-  latest: "https://drafts.aaronpk.com/draft-deshpande-secevent-http-multi-push/draft-deshpande-secevent-http-multi-push.html"
+  github: "appsdesh/draft-deshpande-secevent-http-multi-set-push"
+  latest: "https://appsdesh.github.io/draft-deshpande-secevent-http-multi-set-push/draft-deshpande-secevent-http-multi-set-push.html"
 
 author:
  -
