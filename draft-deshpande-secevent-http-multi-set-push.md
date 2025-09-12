@@ -316,7 +316,8 @@ This specification is a transport efficiency mechanism and it does not address t
 Privacy Considerations from {{Section 6 of RFC8935}} apply.
 
 # IANA Considerations
-None
+
+This document has no IANA actions.
 
 --- back
 
