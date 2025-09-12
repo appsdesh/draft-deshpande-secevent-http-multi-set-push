@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Multi-Push SET</td>
+<td class="center">Push-multi-SET</td>
 <td class="right">September 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Deshpande &amp; Parecki</td>
-<td class="center">Expires 15 March 2026</td>
+<td class="center">Expires 16 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-deshpande-secevent-http-multi-set-push-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-11" class="published">11 September 2025</time>
+<time datetime="2025-09-12" class="published">12 September 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-15">15 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-03-16">16 March 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 16 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1163,7 +1163,7 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-multi-push-endpoint" class="internal xref">Multi-Push Endpoint</a></p>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-push-endpoint-to-receive-mu" class="internal xref">Push endpoint to receive multiple SETs</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-set-delivery-semantics" class="internal xref">SET delivery semantics</a></p>
@@ -1184,7 +1184,10 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
                     <p id="section-toc.1-1.3.2.4.2.1.1"><a href="#section-3.4.1" class="auto internal xref">3.4.1</a>.  <a href="#name-success-response" class="internal xref">Success Response</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.2">
-                    <p id="section-toc.1-1.3.2.4.2.2.1"><a href="#section-3.4.2" class="auto internal xref">3.4.2</a>.  <a href="#name-error-response" class="internal xref">Error Response</a></p>
+                    <p id="section-toc.1-1.3.2.4.2.2.1"><a href="#section-3.4.2" class="auto internal xref">3.4.2</a>.  <a href="#name-failure-response" class="internal xref">Failure Response</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.3">
+                    <p id="section-toc.1-1.3.2.4.2.3.1"><a href="#section-3.4.3" class="auto internal xref">3.4.3</a>.  <a href="#name-error-response" class="internal xref">Error Response</a></p>
 </li>
                 </ul>
 </li>
@@ -1210,6 +1213,15 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-http-and-tls" class="internal xref">HTTP and TLS</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-event-delivery-latency" class="internal xref">Event Delivery Latency</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
+                <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-information-disclosure-in-e" class="internal xref">Information Disclosure in Error Responses</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.6">
+                <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-event-ordering-and-processi" class="internal xref">Event Ordering and Processing Guarantees</a></p>
 </li>
             </ul>
 </li>
@@ -1238,7 +1250,7 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">This specification defines a mechanism by which a transmitter of a Security Event Token (SET) <span>[<a href="#RFC8417" class="cite xref">RFC8417</a>]</span> can deliver multiple SETs to an intended SET Recipient via HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> over TLS in a single POST call. <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> focuses on the delivery of the single SET to the receiver. This specification builds onto <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> to transmit multiple SETs to the receiver in a single POST call.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Multi-push SET delivery is intended to help in following scenarios:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-2">Push-Based delivery for multiple SETs is intended to help in following scenarios:<a href="#section-1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-3.1">
           <p id="section-1-3.1.1">The transmitter of the SET has multiple outstanding SETs to be communicated to the receiver<a href="#section-1-3.1.1" class="pilcrow">¶</a></p>
@@ -1250,17 +1262,17 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
           <p id="section-1-3.3.1">The receiver wants to optimize processing multiple SETs<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-1-4">Multi-push specification will handle all the usecases and scenarios for the <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> and make it more extensible to support multiple SETs per one outbound POST call.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4">This specification will handle all the usecases and scenarios for the <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> and make it more extensible to support multiple SETs per one outbound POST call.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Similar to <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> this specification makes mechanism for exchanging configuration metadata such as endpoint URLs, cryptographic keys, and possible implementation constraints such as buffer size limitations between the transmitter and recipient is out of scope.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="multi-push-endpoint">
+<div id="push-endpoint-to-receive-multiple-sets">
 <section id="section-2">
-      <h2 id="name-multi-push-endpoint">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-multi-push-endpoint" class="section-name selfRef">Multi-Push Endpoint</a>
+      <h2 id="name-push-endpoint-to-receive-mu">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-push-endpoint-to-receive-mu" class="section-name selfRef">Push endpoint to receive multiple SETs</a>
       </h2>
-<p id="section-2-1">Each Receiver that supports this specification <span class="bcp14">MUST</span> support a "multi-push" endpoint. This endpoint <span class="bcp14">MUST</span> be capable of serving HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> requests. This endpoint <span class="bcp14">MUST</span> be TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> enabled and <span class="bcp14">MUST</span> reject any communication not using TLS.
-The Transmitter obtains the multi-push endpoint outside the scope of this specification.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">Each Receiver that supports this specification <span class="bcp14">MUST</span> support a new push endpoint that receives multiple SETs in a single call. This endpoint <span class="bcp14">MUST</span> be capable of serving HTTP POST <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> requests. This endpoint <span class="bcp14">MUST</span> be TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> enabled and <span class="bcp14">MUST</span> reject any communication not using TLS.
+The Transmitter obtains this endpoint from the Receiver outside the scope of this specification.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="set-delivery-semantics">
@@ -1268,7 +1280,7 @@ The Transmitter obtains the multi-push endpoint outside the scope of this specif
       <h2 id="name-set-delivery-semantics">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-set-delivery-semantics" class="section-name selfRef">SET delivery semantics</a>
       </h2>
-<p id="section-3-1">In a multi-push based SET delivery using HTTP over TLS, zero or more SETs are delivered in a JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> document
+<p id="section-3-1">In this SET delivery using HTTP over TLS, zero or more SETs are delivered in a JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> document
 to the SET Receiver. The receiver either acknowledges the successful receipt of the SETs or indicates failure in processing of one or more SETs in a JSON document to the Transmitter.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">After successful (acknowledged) SET delivery, SET Transmitters are not required to retain or record SETs for retransmission. Once a SET is acknowledged, the SET Recipient <span class="bcp14">SHALL</span> be responsible for retention, if needed. Transmitters may also discard undelivered SETs under deployment-specific conditions, such as if they have not been acknowledged (successful or failure) for over too long a period of time or if an excessive amount of storage is needed to retain them.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">Upon receiving a SET, the SET Recipient reads the SET and validates it in the manner described in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-2" class="relref">Section 2</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>. The SET Recipient <span class="bcp14">MUST</span> acknowledge receipt to the SET Transmitter, and <span class="bcp14">SHOULD</span> do so in a timely fashion (e.g., miliseconds). The SET Recipient <span class="bcp14">SHALL NOT</span> use the event acknowledgement mechanism to report event errors other than those relating to the parsing and validation of the SET.<a href="#section-3-3" class="pilcrow">¶</a></p>
@@ -1293,20 +1305,21 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
         <h3 id="name-transmitting-sets">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-transmitting-sets" class="section-name selfRef">Transmitting SETs</a>
         </h3>
-<p id="section-3.3-1">A Transmitter may initiate communication with the receiver in order to:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">To transmit a SET to a SETs Recipient, the SET Transmitter makes an HTTP POST request to a TLS-enabled HTTP endpoint provided by the SET Recipient. The body of this request is of the content type <code>"application/json"</code> and the Accept header field <span class="bcp14">MUST</span> be <code>"application/json"</code>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">A Transmitter may initiate communication with the receiver in order to:<a href="#section-3.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.3-2.1">
-            <p id="section-3.3-2.1.1">Send SETs to the Receiver<a href="#section-3.3-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.3-3.1">
+            <p id="section-3.3-3.1.1">Send SETs to the Receiver<a href="#section-3.3-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.3-2.2">
-            <p id="section-3.3-2.2.1">Receive acknowledgement of the SETs in response<a href="#section-3.3-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.3-3.2">
+            <p id="section-3.3-3.2.1">Receive acknowledgement of the SETs in response<a href="#section-3.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.3-3">The body of this request is of the content type "application/json". It <span class="bcp14">MAY</span> contain the following fields:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
-<p id="section-3.3-4"><code>sets</code>
-          <span class="bcp14">OPTIONAL</span>. A JSON object containing key-value pairs in which the key of a field is a string that contains the jti claim of the SET that is specified in the value of the field. This field <span class="bcp14">MAY</span> be omitted to indicate that no SETs are being delivered by the initiator in this communication. The Transmitter <span class="bcp14">SHOULD</span> limit 20 SETs in the sets.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
-<p id="section-3.3-5">The following is a non-normative example of a response.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.3-6">
+<p id="section-3.3-4">It <span class="bcp14">MAY</span> contain the following fields:<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.3-5"><code>sets</code>
+          <span class="bcp14">OPTIONAL</span>. A JSON object containing key-value pairs in which the key of a field is a string that contains the jti claim of the SET that is specified in the value of the field. This field <span class="bcp14">MAY</span> be omitted to indicate that no SETs are being delivered by the initiator in this communication. The Transmitter <span class="bcp14">SHOULD</span> limit 20 SETs in the sets.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.3-6">The following is a non-normative example of a response.<a href="#section-3.3-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.3-7">
 <pre>
   {
     "sets": {
@@ -1335,19 +1348,20 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
       QiOnsicmVzZXRBdHRlbXB0cyI6NX19fQ."
     }
   }
-</pre><a href="#section-3.3-6" class="pilcrow">¶</a>
+</pre><a href="#section-3.3-7" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-7"><em>Figure 1: Example of SET Transmission</em><a href="#section-3.3-7" class="pilcrow">¶</a></p>
-<p id="section-3.3-8">In the above example, the Transmitter is sending 2 SETs to the Receiver.<a href="#section-3.3-8" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.3-9">
+<p id="section-3.3-8"><em>Figure 1: Example of SET Transmission</em><a href="#section-3.3-8" class="pilcrow">¶</a></p>
+<p id="section-3.3-9">In the above example, the Transmitter is sending 2 SETs to the Receiver.<a href="#section-3.3-9" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.3-10">
 <pre>
   {
     "sets": {},
   }
-</pre><a href="#section-3.3-9" class="pilcrow">¶</a>
+</pre><a href="#section-3.3-10" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-10"><em>Figure 2: Example of empty SET transmission</em><a href="#section-3.3-10" class="pilcrow">¶</a></p>
-<p id="section-3.3-11">In the above example, the Transmitter is sending zero SETs to the Receiver. This placeholder/empty request provides the Receiver to respond back with ack/err for previously transmitted SETs<a href="#section-3.3-11" class="pilcrow">¶</a></p>
+<p id="section-3.3-11"><em>Figure 2: Example of empty SET transmission</em><a href="#section-3.3-11" class="pilcrow">¶</a></p>
+<p id="section-3.3-12">In the above example, the Transmitter is sending zero SETs to the Receiver. This placeholder/empty request provides the Receiver to respond back with ack/err for previously transmitted SETs<a href="#section-3.3-12" class="pilcrow">¶</a></p>
+<p id="section-3.3-13">The SET Transmitter <span class="bcp14">MAY</span> include in the request an Accept-Language header field to indicate to the SET Recipient the preferred language(s) in which to receive error messages.<a href="#section-3.3-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="response-communication">
@@ -1355,24 +1369,25 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
         <h3 id="name-response-communication">
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-response-communication" class="section-name selfRef">Response Communication</a>
         </h3>
-<p id="section-3.4-1">A Receiver <span class="bcp14">MUST</span> repond to the communication by sending an HTTP response. The body of this response is of the content type "application/json". It contains <span class="bcp14">MAY</span> contain the following fields:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-1">A Receiver <span class="bcp14">MUST</span> repond to the communication by sending an HTTP response. The body of this response is of the content type <code>"application/json"</code>. It <span class="bcp14">MAY</span> contain the following fields:<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 <p id="section-3.4-2"><code>ack</code>
-          <span class="bcp14">OPTIONAL</span>. An array of strings, in which each string is the jti value of a previously received SET that is acknowledged in this object. This array <span class="bcp14">MAY</span> be empty or this field <span class="bcp14">MAY</span> be omitted to indicate that no previously received SETs are being acknowledged in this communication.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+          <span class="bcp14">OPTIONAL</span>. An array of strings, in which each string is the <code>jti</code> value of a previously received SET that is acknowledged in this object. This array <span class="bcp14">MAY</span> be empty or this field <span class="bcp14">MAY</span> be omitted to indicate that no previously received SETs are being acknowledged in this communication.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.4-3"><code>setErrs</code>
-          <span class="bcp14">OPTIONAL</span>. A JSON object containing key-value pairs in which the key of a field is a string that contains the jti value of a previously received SET that the sender of the communication object was unable to process. The value of the field is a JSON object that has the following fields:<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+          <span class="bcp14">OPTIONAL</span>. A JSON object containing key-value pairs in which the key of a field is a string that contains the <code>jti</code> value of a previously received SET that the sender of the communication object was unable to process. The value of the field is a JSON object that has the following fields:<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 <p id="section-3.4-4"><code>err</code>
-          <span class="bcp14">OPTIONAL</span>. The short reason why the specified SET failed to be processed.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+          <span class="bcp14">OPTIONAL</span>. The short reason why the specified SET failed to be processed. Error codes are described in Section 2.4 of <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
 <p id="section-3.4-5"><code>description</code>
           <span class="bcp14">OPTIONAL</span>. An explanation of why the SET failed to be processed<a href="#section-3.4-5" class="pilcrow">¶</a></p>
+<p id="section-3.4-6">The response <span class="bcp14">MUST</span> include a Content-Language header field whose value indicates the language of the error descriptions included in the response body. If the SET Recipient can provide error descriptions in multiple languages, they <span class="bcp14">SHOULD</span> choose the language to use according to the value of the Accept-Language header field sent by the SET Transmitter in the transmission request, as described in Section 5.3.5 of <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>. If the SET Transmitter did not send an Accept-Language header field, or if the SET Recipient does not support any of the languages included in the header field, the SET Recipient <span class="bcp14">MUST</span> respond with messages that are understandable by an English-speaking person, as described in Section 4.5 of <span>[<a href="#RFC2277" class="cite xref">RFC2277</a>]</span>.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
 <div id="success-response">
 <section id="section-3.4.1">
           <h4 id="name-success-response">
 <a href="#section-3.4.1" class="section-number selfRef">3.4.1. </a><a href="#name-success-response" class="section-name selfRef">Success Response</a>
           </h4>
-<p id="section-3.4.1-1">If the Receiver is successful in processing the request, it <span class="bcp14">MUST</span> return the HTTP status code 200 (OK). The response <span class="bcp14">MUST</span> have the content-type "application/json".<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-1">If the Receiver is successful in processing the request, it <span class="bcp14">MUST</span> return the HTTP status code 202 (Accepted). The response <span class="bcp14">MUST</span> have the content-type <code>"application/json"</code>.<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.4.1-2">
 <pre>
-  HTTP/1.1 200 OK
+  HTTP/1.1 202 Accepted
   Content-type: application/json
 
   {
@@ -1386,7 +1401,7 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
 <p id="section-3.4.1-4">In the above example, the Receiver acknowledges one of the SETs it previously received. There are no errors reported by the Receiver.<a href="#section-3.4.1-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.4.1-5">
 <pre>
-  HTTP/1.1 200 OK
+  HTTP/1.1 202 Accepted
   Content-type: application/json
 
   {
@@ -1397,8 +1412,8 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
      ],
      "setErrs": {
       "4d3559ec67504aaba65d40b0363faad8" : {
-        "err": "invalid subject",
-        "description": "subject format not supported"
+        "err": "invalid_key",
+        "description": "Failed validation"
       }
      }
   }
@@ -1406,22 +1421,57 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
 </div>
 <p id="section-3.4.1-6"><em>Figure 4: Example of SET Transmission response, ack and errors</em><a href="#section-3.4.1-6" class="pilcrow">¶</a></p>
 <p id="section-3.4.1-7">In the above example, the Receiver acknowledges three of the SETs it previously received. There are errors reported by the Receiver for acklowledging one SET.<a href="#section-3.4.1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="failure-response">
+<section id="section-3.4.2">
+          <h4 id="name-failure-response">
+<a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-failure-response" class="section-name selfRef">Failure Response</a>
+          </h4>
+<p id="section-3.4.2-1">In the event of a general HTTP error condition, the SET Recipient responds with the applicable HTTP Status Code, as defined in Section 6 of <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-2">When the SET Recipient detects an error parsing, or authenticating a SET transmitted in a SET Transmission Request, the SET Recipient <span class="bcp14">SHALL</span> respond with an HTTP Response Status Code of 400 (Bad Request). The Content-Type header field of this response <span class="bcp14">MUST</span> be <code>"application/json"</code>, and the body <span class="bcp14">MUST</span> be a UTF-8 encoded JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> object containing the following name/value pairs:<a href="#section-3.4.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-3">err: Error code
+description: A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-4">Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the <a href="#success-response" class="auto internal xref">Section 3.4.1</a> Section.<a href="#section-3.4.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-5">Example error codes that can indicate API level failures <span class="bcp14">MAY</span> include but not limited to:
+    - invalid_request (request is malformated)
+    - authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
+    - access_denied (The transmitter does not have adequate permissions to invoke this API call).
+    - many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)<a href="#section-3.4.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-6">err:
+A Security Event Token Error Code (see Section 2.4).
+description:
+A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific<a href="#section-3.4.2-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.4.2-7">
+<pre>
+  HTTP/1.1 400 Bad Request
+  Content-Language: en-US
+  Content-Type: application/json
+
+  {
+    "err": "authentication_failed",
+    "description": "Access token has expired."
+  }
+_Figure 5: Example Error Response (authentication_failed)
+</pre><a href="#section-3.4.2-7" class="pilcrow">¶</a>
+</div>
+<p id="section-3.4.2-8">Above non-normative example error response indicating that the access token included in the request is expired.<a href="#section-3.4.2-8" class="pilcrow">¶</a></p>
 <div id="out-of-order-delivery">
-<section id="section-3.4.1.1">
+<section id="section-3.4.2.1">
             <h5 id="name-out-of-order-delivery">
-<a href="#section-3.4.1.1" class="section-number selfRef">3.4.1.1. </a><a href="#name-out-of-order-delivery" class="section-name selfRef">Out of order delivery</a>
+<a href="#section-3.4.2.1" class="section-number selfRef">3.4.2.1. </a><a href="#name-out-of-order-delivery" class="section-name selfRef">Out of order delivery</a>
             </h5>
-<p id="section-3.4.1.1-1">A Response may contain <code>jti</code> values in its ack or setErrs that do not correspond to the SETs received in the same Request to which the Response is being sent. They <span class="bcp14">MAY</span> consist of values received in previous Requests.<a href="#section-3.4.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2.1-1">A Response may contain <code>jti</code> values in its ack or setErrs that do not correspond to the SETs received in the same Request to which the Response is being sent. They <span class="bcp14">MAY</span> consist of values received in previous Requests.<a href="#section-3.4.2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="error-response">
-<section id="section-3.4.2">
+<section id="section-3.4.3">
           <h4 id="name-error-response">
-<a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-error-response" class="section-name selfRef">Error Response</a>
+<a href="#section-3.4.3" class="section-number selfRef">3.4.3. </a><a href="#name-error-response" class="section-name selfRef">Error Response</a>
           </h4>
-<p id="section-3.4.2-1">The receiver <span class="bcp14">MUST</span> respond with an error response if it is unable to process the request. The error response <span class="bcp14">MUST</span> include the appropriate error code as described in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.3-1">The receiver <span class="bcp14">MUST</span> respond with an error response if it is unable to process the request. The error response <span class="bcp14">MUST</span> include the appropriate error code as described in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-3.4.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1436,9 +1486,8 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
 <p id="section-4-1">The Transmitter <span class="bcp14">MUST</span> verify the identity of the Receiver by validating
 the TLS certification presented by the Receiver, and verifying that
 it is the intended recipient of the request, before sending the SETs.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">The Transmitter <span class="bcp14">MUST</span> attempt to obtain the OAuth Protected Resource
-Metadata <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> for the Receiver's multi-push endpoint.  If such metadata is
-found, the Transmitter <span class="bcp14">MUST</span> obtain an access token using the metadata.
+<p id="section-4-2">The Transmitter <span class="bcp14">SHOULD</span> attempt to obtain the OAuth Protected Resource
+Metadata <span>[<a href="#I-D.ietf-oauth-resource-metadata" class="cite xref">I-D.ietf-oauth-resource-metadata</a>]</span> for the Receiver's Push-Based delivery for multiple SETs endpoint.  If such metadata is found, the Transmitter <span class="bcp14">MUST</span> obtain an access token using the metadata.
 If no such metadata is found, then the Transmitter <span class="bcp14">MAY</span> use any means to
 authorize itself to the Receiver.<a href="#section-4-2" class="pilcrow">¶</a></p>
 </section>
@@ -1448,10 +1497,10 @@ authorize itself to the Receiver.<a href="#section-4-2" class="pilcrow">¶</a></
       <h2 id="name-delivery-reliability">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-delivery-reliability" class="section-name selfRef">Delivery Reliability</a>
       </h2>
-<p id="section-5-1">A Transmitter <span class="bcp14">MUST</span> attempt to deliver any SETs it has previously attempted to deliver to a Peer until:
-   - It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Peer
-   - It receives a setErrs object for that SET in a subsequent communication with the Peer
-   - It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts <span class="bcp14">MAY</span> be set by the Transmitter for itself and <span class="bcp14">SHOULD</span> be communicated offline to the Peers<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">A Transmitter <span class="bcp14">MUST</span> attempt to deliver any SETs it has previously attempted to deliver to a Receiver until:
+   - It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Receiver
+   - It receives a setErrs object for that SET in a subsequent communication with the Receiver
+   - It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts <span class="bcp14">MAY</span> be set by the Transmitter for itself and <span class="bcp14">SHOULD</span> be communicated offline to the Receivers<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">Additionally consider Delivery Relieability aspects discussed in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-4" class="relref">Section 4</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> .<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1476,7 +1525,9 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
         <h3 id="name-too-many-sets-in-the-respon">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-too-many-sets-in-the-respon" class="section-name selfRef">Too many SETs in the response</a>
         </h3>
-<p id="section-7.1-1">Receiver <span class="bcp14">MUST</span> inform the transmitter (out of band) the maximum number of SETs that could be consumed in a single call. The Transmitter <span class="bcp14">MUST</span> obey the maximum number of SETs to be communicated to the receiver. This will avoid any potential truncations/loss of information at the receiver.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-1">This mechanism allows a transmitter to send a large number of SETs in a single request. A malicious or misconfigured transmitter could send an extremely large payload, attempting to exhaust memory or CPU resources on the receiver during JSON parsing or JWT validation.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-2">Receivers <span class="bcp14">MUST</span> protect themselves against such attacks. It is <span class="bcp14">RECOMMENDED</span> that Receivers establish and document a reasonable upper limit on the number of SETs they will process in a single call. Transmitter <span class="bcp14">MUST</span> obey the maximum number of SETs to be communicated to the receiver. This will avoid any potential truncations/loss of information at the receiver.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1-3">If a Receiver receives a batch exceeding this limit, it <span class="bcp14">SHOULD</span> reject the entire request with a <code>413 Payload Too Large</code> HTTP status code.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authentication-and-authorization">
@@ -1484,7 +1535,7 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
         <h3 id="name-authentication-and-authoriza">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-authentication-and-authoriza" class="section-name selfRef">Authentication and Authorization</a>
         </h3>
-<p id="section-7.2-1">Transmitter <span class="bcp14">MUST</span> follow the procedures described in section <a href="#authn-and-authz" class="auto internal xref">Section 4</a> in order to securely authenticate and authorize Peers<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-1">Transmitter <span class="bcp14">MUST</span> follow the procedures described in section <a href="#authn-and-authz" class="auto internal xref">Section 4</a> in order to securely authenticate and authorize Receiver<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="http-and-tls">
@@ -1493,7 +1544,38 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
 <a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-http-and-tls" class="section-name selfRef">HTTP and TLS</a>
         </h3>
 <p id="section-7.3-1">Transmitter <span class="bcp14">MUST</span> use TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> to communicate with Receiver and is subject to the security considerations of HTTP <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
-<p id="section-7.3-2">Additional security consideration in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-5" class="relref">Section 5</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="event-delivery-latency">
+<section id="section-7.4">
+        <h3 id="name-event-delivery-latency">
+<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-event-delivery-latency" class="section-name selfRef">Event Delivery Latency</a>
+        </h3>
+<p id="section-7.4-1">The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters <span class="bcp14">MUST NOT</span> unduly delay the transmission of events in an attempt to create larger batches.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+<p id="section-7.4-2">Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.<a href="#section-7.4-2" class="pilcrow">¶</a></p>
+<p id="section-7.4-3">It is <span class="bcp14">RECOMMENDED</span> that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:
+    - The number of SETs in the batch reaches a configured size limit.
+    - A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.<a href="#section-7.4-3" class="pilcrow">¶</a></p>
+<p id="section-7.4-4">This ensures a balance between network efficiency and the real-time nature of the communication.<a href="#section-7.4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="information-disclosure-in-error-responses">
+<section id="section-7.5">
+        <h3 id="name-information-disclosure-in-e">
+<a href="#section-7.5" class="section-number selfRef">7.5. </a><a href="#name-information-disclosure-in-e" class="section-name selfRef">Information Disclosure in Error Responses</a>
+        </h3>
+<p id="section-7.5-1">The <code>setErrs</code> is designed for debugging and provides valuable feedback. However, if implemented incorrectly, it can become a souce of information leakage, disclosing internal details or enable enumeration type attacks.<a href="#section-7.5-1" class="pilcrow">¶</a></p>
+<p id="section-7.5-2">It is <span class="bcp14">RECOMMENDED</span> that the <code>setErrs</code> information is helpful without revealing sensitive information about internal architecture.<a href="#section-7.5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="event-ordering-and-processing-guarantees">
+<section id="section-7.6">
+        <h3 id="name-event-ordering-and-processi">
+<a href="#section-7.6" class="section-number selfRef">7.6. </a><a href="#name-event-ordering-and-processi" class="section-name selfRef">Event Ordering and Processing Guarantees</a>
+        </h3>
+<p id="section-7.6-1">This specification is a transport efficiency mechanism and it does not address transactional aspects of the request. Every SET is an independent event in the request to the receiver. The event ordering in the request does not imply any chronological depependence. For chronological dependence the receiver should look at the time related event claims.The<a href="#section-7.6-1" class="pilcrow">¶</a></p>
+<p id="section-7.6-2">The Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
+<p id="section-7.6-3">Additional security consideration in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-5" class="relref">Section 5</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-7.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1527,6 +1609,10 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2277">[RFC2277]</dt>
+      <dd>
+<span class="refAuthor">Alvestrand, H.</span>, <span class="refTitle">"IETF Policy on Character Sets and Languages"</span>, <span class="seriesInfo">BCP 18</span>, <span class="seriesInfo">RFC 2277</span>, <span class="seriesInfo">DOI 10.17487/RFC2277</span>, <time datetime="1998-01" class="refDate">January 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2277">https://www.rfc-editor.org/rfc/rfc2277</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7231">[RFC7231]</dt>
       <dd>
