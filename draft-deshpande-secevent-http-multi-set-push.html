@@ -1430,19 +1430,25 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
           </h4>
 <p id="section-3.4.2-1">In the event of a general HTTP error condition, the SET Recipient responds with the applicable HTTP Status Code, as defined in Section 6 of <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.4.2-2">When the SET Recipient detects an error parsing, or authenticating a SET transmitted in a SET Transmission Request, the SET Recipient <span class="bcp14">SHALL</span> respond with an HTTP Response Status Code of 400 (Bad Request). The Content-Type header field of this response <span class="bcp14">MUST</span> be <code>"application/json"</code>, and the body <span class="bcp14">MUST</span> be a UTF-8 encoded JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> object containing the following name/value pairs:<a href="#section-3.4.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.4.2-3">err: Error code
-description: A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
-<p id="section-3.4.2-4">Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the <a href="#success-response" class="auto internal xref">Section 3.4.1</a> Section.<a href="#section-3.4.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.4.2-5">Example error codes that can indicate API level failures <span class="bcp14">MAY</span> include but not limited to:
-    - invalid_request (request is malformated)
-    - authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
-    - access_denied (The transmitter does not have adequate permissions to invoke this API call).
-    - many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)<a href="#section-3.4.2-5" class="pilcrow">¶</a></p>
-<p id="section-3.4.2-6">err:
+<p id="section-3.4.2-3"><code>err</code>
+            <span class="bcp14">OPTIONAL</span>. The short reason why the API failed to process the request. (Not specific to any SETs, but usually indicate service level failure or processing error)<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-4"><code>description</code>
+            <span class="bcp14">OPTIONAL</span>. A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.<a href="#section-3.4.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-5">Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the <a href="#success-response" class="auto internal xref">Section 3.4.1</a> Section.<a href="#section-3.4.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-6">Example error codes that can indicate API level failures <span class="bcp14">MAY</span> include but not limited to:<a href="#section-3.4.2-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.4.2-7">
+<pre>
+- invalid_request (request is malformated)
+- authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
+- access_denied (The transmitter does not have adequate permissions to invoke this API call).
+- many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
+</pre><a href="#section-3.4.2-7" class="pilcrow">¶</a>
+</div>
+<p id="section-3.4.2-8">err:
 A Security Event Token Error Code (see Section 2.4).
 description:
-A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific<a href="#section-3.4.2-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.4.2-7">
+A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific<a href="#section-3.4.2-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.4.2-9">
 <pre>
   HTTP/1.1 400 Bad Request
   Content-Language: en-US
@@ -1453,9 +1459,9 @@ A UTF-8 string containing a human-readable description of the error that may pro
     "description": "Access token has expired."
   }
 _Figure 5: Example Error Response (authentication_failed)
-</pre><a href="#section-3.4.2-7" class="pilcrow">¶</a>
+</pre><a href="#section-3.4.2-9" class="pilcrow">¶</a>
 </div>
-<p id="section-3.4.2-8">Above non-normative example error response indicating that the access token included in the request is expired.<a href="#section-3.4.2-8" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-10">Above non-normative example error response indicating that the access token included in the request is expired.<a href="#section-3.4.2-10" class="pilcrow">¶</a></p>
 <div id="out-of-order-delivery">
 <section id="section-3.4.2.1">
             <h5 id="name-out-of-order-delivery">
