@@ -309,7 +309,7 @@ This specification is a transport efficiency mechanism and it does not address t
 
  The Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
 
-## Additional security consideration in {{Section 5 of RFC8935}}.
+Additional security consideration in {{Section 5 of RFC8935}}.
 
 # Privacy Considerations
 
