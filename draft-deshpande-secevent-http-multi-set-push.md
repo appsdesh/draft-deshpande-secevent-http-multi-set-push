@@ -210,7 +210,7 @@ In the event of a general HTTP error condition, the SET Recipient responds with 
 
 When the SET Recipient detects an error parsing, or authenticating a SET transmitted in a SET Transmission Request, the SET Recipient SHALL respond with an HTTP Response Status Code of 400 (Bad Request). The Content-Type header field of this response MUST be `"application/json"`, and the body MUST be a UTF-8 encoded JSON [RFC8259] object containing the following name/value pairs:
 
-`err` 
+`err`
 OPTIONAL. The short reason why the API failed to process the request. (Not specific to any SETs, but usually indicate service level failure or processing error)
 
 `description`
