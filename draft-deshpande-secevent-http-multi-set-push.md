@@ -68,7 +68,7 @@ This specification will handle all the usecases and scenarios for the {{RFC8935}
 
 Similar to {{RFC8935}} this specification makes mechanism for exchanging configuration metadata such as endpoint URLs, cryptographic keys, and possible implementation constraints such as buffer size limitations between the transmitter and recipient is out of scope.
 
-# Push endpoint to receive multiple SETs 
+# Push endpoint to receive multiple SETs
 
 Each Receiver that supports this specification MUST support a new push endpoint that receives multiple SETs in a single call. This endpoint MUST be capable of serving HTTP POST {{RFC7231}} requests. This endpoint MUST be TLS {{RFC8446}} enabled and MUST reject any communication not using TLS.
 The Transmitter obtains this endpoint from the Receiver outside the scope of this specification.
