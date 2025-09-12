@@ -37,7 +37,7 @@ normative:
    RFC8935:
    RFC9110:
    RFC8446:
-   I-D.ietf-oauth-resource-metadata:
+   RFC9728:
    RFC8259:
    RFC2277:
 
@@ -254,7 +254,7 @@ the TLS certification presented by the Receiver, and verifying that
 it is the intended recipient of the request, before sending the SETs.
 
 The Transmitter SHOULD attempt to obtain the OAuth Protected Resource
-Metadata {{I-D.ietf-oauth-resource-metadata}} for the Receiver's Push-Based delivery for multiple SETs endpoint.  If such metadata is found, the Transmitter MUST obtain an access token using the metadata.
+Metadata {{RFC9728}} for the Receiver's Push-Based delivery for multiple SETs endpoint.  If such metadata is found, the Transmitter MUST obtain an access token using the metadata.
 If no such metadata is found, then the Transmitter MAY use any means to
 authorize itself to the Receiver.
 
