@@ -225,10 +225,6 @@ Example error codes that can indicate API level failures MAY include but not lim
 - access_denied (The transmitter does not have adequate permissions to invoke this API call).
 - many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
 
-err:
-A Security Event Token Error Code (see Section 2.4).
-description:
-A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific
 
       HTTP/1.1 400 Bad Request
       Content-Language: en-US
@@ -238,7 +234,7 @@ A UTF-8 string containing a human-readable description of the error that may pro
         "err": "authentication_failed",
         "description": "Access token has expired."
       }
-      
+
     _Figure 5: Example Error Response (authentication_failed)
 
 Above non-normative example error response indicating that the access token included in the request is expired.
