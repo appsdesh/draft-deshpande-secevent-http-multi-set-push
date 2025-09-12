@@ -413,11 +413,11 @@ Table of Contents
    sending the SETs.
 
    The Transmitter SHOULD attempt to obtain the OAuth Protected Resource
-   Metadata [I-D.ietf-oauth-resource-metadata] for the Receiver's Push-
-   Based delivery for multiple SETs endpoint.  If such metadata is
-   found, the Transmitter MUST obtain an access token using the
-   metadata.  If no such metadata is found, then the Transmitter MAY use
-   any means to authorize itself to the Receiver.
+   Metadata [RFC9728] for the Receiver's Push-Based delivery for
+   multiple SETs endpoint.  If such metadata is found, the Transmitter
+   MUST obtain an access token using the metadata.  If no such metadata
+   is found, then the Transmitter MAY use any means to authorize itself
+   to the Receiver.
 
 5.  Delivery Reliability
 
@@ -531,13 +531,6 @@ Table of Contents
 
 10.  Normative References
 
-   [I-D.ietf-oauth-resource-metadata]
-              Jones, M. B., Hunt, P., and A. Parecki, "OAuth 2.0
-              Protected Resource Metadata", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-resource-metadata-13, 15 October
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              oauth-resource-metadata-13>.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -579,6 +572,11 @@ Table of Contents
               Ed., "HTTP Semantics", STD 97, RFC 9110,
               DOI 10.17487/RFC9110, June 2022,
               <https://www.rfc-editor.org/rfc/rfc9110>.
+
+   [RFC9728]  Jones, M.B., Hunt, P., and A. Parecki, "OAuth 2.0
+              Protected Resource Metadata", RFC 9728,
+              DOI 10.17487/RFC9728, April 2025,
+              <https://www.rfc-editor.org/rfc/rfc9728>.
 
 Acknowledgments
 
