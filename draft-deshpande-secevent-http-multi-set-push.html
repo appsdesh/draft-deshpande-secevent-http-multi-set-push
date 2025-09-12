@@ -1436,14 +1436,20 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
             <span class="bcp14">OPTIONAL</span>. A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.<a href="#section-3.4.2-4" class="pilcrow">¶</a></p>
 <p id="section-3.4.2-5">Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the <a href="#success-response" class="auto internal xref">Section 3.4.1</a> Section.<a href="#section-3.4.2-5" class="pilcrow">¶</a></p>
 <p id="section-3.4.2-6">Example error codes that can indicate API level failures <span class="bcp14">MAY</span> include but not limited to:<a href="#section-3.4.2-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.4.2-7">
-<pre>
-- invalid_request (request is malformated)
-- authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
-- access_denied (The transmitter does not have adequate permissions to invoke this API call).
-- many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
-</pre><a href="#section-3.4.2-7" class="pilcrow">¶</a>
-</div>
+<ul class="normal">
+<li class="normal" id="section-3.4.2-7.1">
+              <p id="section-3.4.2-7.1.1">invalid_request (request is malformated)<a href="#section-3.4.2-7.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.4.2-7.2">
+              <p id="section-3.4.2-7.2.1">authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)<a href="#section-3.4.2-7.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.4.2-7.3">
+              <p id="section-3.4.2-7.3.1">access_denied (The transmitter does not have adequate permissions to invoke this API call).<a href="#section-3.4.2-7.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.4.2-7.4">
+              <p id="section-3.4.2-7.4.1">many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)<a href="#section-3.4.2-7.4.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
 <p id="section-3.4.2-8">err:
 A Security Event Token Error Code (see Section 2.4).
 description:

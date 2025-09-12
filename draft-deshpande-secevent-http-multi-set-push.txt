@@ -365,10 +365,18 @@ Table of Contents
    Example error codes that can indicate API level failures MAY include
    but not limited to:
 
-- invalid_request (request is malformated)
-- authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
-- access_denied (The transmitter does not have adequate permissions to invoke this API call).
-- many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
+   *  invalid_request (request is malformated)
+
+   *  authentication_failed (authentication token provided by the
+      Trasnmitter is expired, revoked or invalid)
+
+   *  access_denied (The transmitter does not have adequate permissions
+      to invoke this API call).
+
+   *  many_sets (Transmitter included too many SETs in a single request,
+      this is an idication for the transmitter to make a request with
+      lower number of SETs or to comply with max SETs count that
+      receiver published outside of this spec)
 
    err: A Security Event Token Error Code (see Section 2.4).
    description: A UTF-8 string containing a human-readable description
