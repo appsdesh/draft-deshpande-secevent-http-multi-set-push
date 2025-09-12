@@ -213,7 +213,7 @@ When the SET Recipient detects an error parsing, or authenticating a SET transmi
 err: Error code
 description: A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.
 
-Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the {{#success-response}} Section.
+Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the {{success-response}} Section.
 
 Example error codes that can indicate API level failures MAY include but not limited to:
     - invalid_request (request is malformated)
