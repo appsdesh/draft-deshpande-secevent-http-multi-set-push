@@ -1448,26 +1448,23 @@ to the SET Receiver. The receiver either acknowledges the successful receipt of 
 </li>
             <li class="normal" id="section-3.4.2-7.4">
               <p id="section-3.4.2-7.4.1">many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)<a href="#section-3.4.2-7.4.1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.4.2-7.4.2">
+<pre>
+HTTP/1.1 400 Bad Request
+Content-Language: en-US
+Content-Type: application/json
+
+{
+  "err": "authentication_failed",
+  "description": "Access token has expired."
+}
+</pre><a href="#section-3.4.2-7.4.2" class="pilcrow">¶</a>
+</div>
+<p id="section-3.4.2-7.4.3">
+_Figure 5: Example Error Response (authentication_failed)<a href="#section-3.4.2-7.4.3" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-3.4.2-8">err:
-A Security Event Token Error Code (see Section 2.4).
-description:
-A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific<a href="#section-3.4.2-8" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3.4.2-9">
-<pre>
-  HTTP/1.1 400 Bad Request
-  Content-Language: en-US
-  Content-Type: application/json
-
-  {
-    "err": "authentication_failed",
-    "description": "Access token has expired."
-  }
-_Figure 5: Example Error Response (authentication_failed)
-</pre><a href="#section-3.4.2-9" class="pilcrow">¶</a>
-</div>
-<p id="section-3.4.2-10">Above non-normative example error response indicating that the access token included in the request is expired.<a href="#section-3.4.2-10" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-8">Above non-normative example error response indicating that the access token included in the request is expired.<a href="#section-3.4.2-8" class="pilcrow">¶</a></p>
 <div id="out-of-order-delivery">
 <section id="section-3.4.2.1">
             <h5 id="name-out-of-order-delivery">
