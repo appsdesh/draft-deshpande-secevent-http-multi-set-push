@@ -56,7 +56,7 @@ failed transmission via the HTTP response.
 
 # Introduction
 
-This specification defines a mechanism by which a transmitter of a Security Event Token (SET) {{RFC8417}} can deliver multiple SETs to an intended SET Recipient via HTTP POST {{RFC7231}} over TLS in a single POST call. {{RFC8935}} focuses on the delivery of the single SET to the receiver. This specification builds onto {{RFC8935}} to transmit multiple SETs to the receiver in a single POST call.
+This specification defines a mechanism by which a transmitter of a Security Event Token (SET) {{RFC8417}} can deliver multiple SETs to an intended SET Recipient via HTTP POST {{RFC7231}} over TLS in a single POST call. {{RFC8935}} focuses on the delivery of the single SET to the receiver. This specification defines an efficient transport mechanism and builds onto {{RFC8935}} to transmit multiple SETs to the receiver in a single POST call.
 
 Push-Based delivery for multiple SETs is intended to help in following scenarios:
 
@@ -226,16 +226,16 @@ Example error codes that can indicate API level failures MAY include but not lim
 - many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
 
 
-      HTTP/1.1 400 Bad Request
-      Content-Language: en-US
-      Content-Type: application/json
+  HTTP/1.1 400 Bad Request
+  Content-Language: en-US
+  Content-Type: application/json
 
-      {
-        "err": "authentication_failed",
-        "description": "Access token has expired."
-      }
+  {
+    "err": "authentication_failed",
+    "description": "Access token has expired."
+  }
 
-    _Figure 5: Example Error Response (authentication_failed)
+_Figure 5: Example Error Response (authentication_failed)
 
 Above non-normative example error response indicating that the access token included in the request is expired.
 
