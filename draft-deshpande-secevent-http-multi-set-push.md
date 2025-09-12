@@ -210,12 +210,16 @@ In the event of a general HTTP error condition, the SET Recipient responds with 
 
 When the SET Recipient detects an error parsing, or authenticating a SET transmitted in a SET Transmission Request, the SET Recipient SHALL respond with an HTTP Response Status Code of 400 (Bad Request). The Content-Type header field of this response MUST be `"application/json"`, and the body MUST be a UTF-8 encoded JSON [RFC8259] object containing the following name/value pairs:
 
-err: Error code
-description: A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.
+`err` 
+OPTIONAL. The short reason why the API failed to process the request. (Not specific to any SETs, but usually indicate service level failure or processing error)
+
+`description`
+OPTIONAL. A UTF-8 string containing a human-readable description of the error that may provide additional diagnostic information. The exact content of this field is implementation specific.
 
 Note that failure responses in this specification are not specific to any failures related to any specific SET processing. SET specific errors should be communicated by a success response payload defined in the {{success-response}} Section.
 
 Example error codes that can indicate API level failures MAY include but not limited to:
+
     - invalid_request (request is malformated)
     - authentication_failed (authentication token provided by the Trasnmitter is expired, revoked or invalid)
     - access_denied (The transmitter does not have adequate permissions to invoke this API call).
