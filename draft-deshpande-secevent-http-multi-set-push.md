@@ -238,6 +238,7 @@ A UTF-8 string containing a human-readable description of the error that may pro
         "err": "authentication_failed",
         "description": "Access token has expired."
       }
+      
     _Figure 5: Example Error Response (authentication_failed)
 
 Above non-normative example error response indicating that the access token included in the request is expired.
