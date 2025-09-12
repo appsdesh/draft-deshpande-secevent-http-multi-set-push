@@ -226,14 +226,14 @@ Example error codes that can indicate API level failures MAY include but not lim
 - many_sets (Transmitter included too many SETs in a single request, this is an idication for the transmitter to make a request with lower number of SETs or to comply with max SETs count that receiver published outside of this spec)
 
 
-  HTTP/1.1 400 Bad Request
-  Content-Language: en-US
-  Content-Type: application/json
+      HTTP/1.1 400 Bad Request
+      Content-Language: en-US
+      Content-Type: application/json
 
-  {
-    "err": "authentication_failed",
-    "description": "Access token has expired."
-  }
+      {
+        "err": "authentication_failed",
+        "description": "Access token has expired."
+      }
 
 _Figure 5: Example Error Response (authentication_failed)
 
