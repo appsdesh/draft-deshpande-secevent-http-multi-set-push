@@ -95,10 +95,10 @@ To transmit a SET to a SETs Recipient, the SET Transmitter makes an HTTP POST re
 
 A Transmitter may initiate communication with the receiver in order to:
 
- -  Send SETs to the Receiver
- -  Receive acknowledgement of the SETs in response
+-  Send SETs to the Receiver
+-  Receive acknowledgement of the SETs in response
 
- It MAY contain the following fields:
+It MAY contain the following fields:
 
 `sets`
 OPTIONAL. A JSON object containing key-value pairs in which the key of a field is a string that contains the jti claim of the SET that is specified in the value of the field. This field MAY be omitted to indicate that no SETs are being delivered by the initiator in this communication. The Transmitter SHOULD limit 20 SETs in the sets.
@@ -260,9 +260,10 @@ authorize itself to the Receiver.
 
 # Delivery Reliability
 A Transmitter MUST attempt to deliver any SETs it has previously attempted to deliver to a Receiver until:
-   - It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Receiver
-   - It receives a setErrs object for that SET in a subsequent communication with the Receiver
-   - It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts MAY be set by the Transmitter for itself and SHOULD be communicated offline to the Receivers
+
+- It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Receiver
+- It receives a setErrs object for that SET in a subsequent communication with the Receiver
+- It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts MAY be set by the Transmitter for itself and SHOULD be communicated offline to the Receivers
 
 Additionally consider Delivery Relieability aspects discussed in {{Section 4 of RFC8935}} .
 
@@ -293,8 +294,9 @@ The primary purpose of security event tokens is the timely communication of secu
 Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.
 
 It is RECOMMENDED that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:
-    - The number of SETs in the batch reaches a configured size limit.
-    - A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.
+
+- The number of SETs in the batch reaches a configured size limit.
+- A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.
 
 This ensures a balance between network efficiency and the real-time nature of the communication.
 
@@ -308,7 +310,7 @@ It is RECOMMENDED that the `setErrs` information is helpful without revealing se
 
 This specification is a transport efficiency mechanism and it does not address transactional aspects of the request. Every SET is an independent event in the request to the receiver. The event ordering in the request does not imply any chronological depependence. For chronological dependence the receiver should look at the time related event claims.The
 
- The Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
+aAThe Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
 
 Additional security consideration in {{Section 5 of RFC8935}}.
 
