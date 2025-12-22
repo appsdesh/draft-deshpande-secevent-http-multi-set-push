@@ -317,7 +317,7 @@ It is RECOMMENDED that the `setErrs` information is helpful without revealing se
 
 This specification is a transport efficiency mechanism and it does not address transactional aspects of the request. Every SET is an independent event in the request to the receiver. The event ordering in the request does not imply any chronological depependence. For chronological dependence the receiver should look at the time related event claims.The
 
-aAThe Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
+A Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
 
 Additional security consideration in {{Section 5 of RFC8935}}.
 
