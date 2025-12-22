@@ -5,7 +5,7 @@
 Security Events                                             A. Deshpande
 Internet-Draft                                                A. Parecki
 Intended status: Standards Track                                    Okta
-Expires: 16 March 2026                                 12 September 2025
+Expires: 25 June 2026                                   22 December 2025
 
 
  Push-Based Delivery For Multiple Security Event Token (SET) Using HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2026.
+   This Internet-Draft will expire on 25 June 2026.
 
 Copyright Notice
 
@@ -423,16 +423,20 @@ Table of Contents
 5.  Delivery Reliability
 
    A Transmitter MUST attempt to deliver any SETs it has previously
-   attempted to deliver to a Receiver until: - It receives an
-   acknowledgement through the ack value for that SET in a subsequent
-   communication with the Receiver - It receives a setErrs object for
-   that SET in a subsequent communication with the Receiver - It has
-   attempted to deliver the SET a maximum number of times and has failed
-   to communicate either due to communication errors or lack of
-   inclusion in ack or setErrs in subsequent communications that were
-   conducted for the maximum number of times.  The maximum number of
-   attempts MAY be set by the Transmitter for itself and SHOULD be
-   communicated offline to the Receivers
+   attempted to deliver to a Receiver until:
+
+   *  It receives an acknowledgement through the ack value for that SET
+      in a subsequent communication with the Receiver
+
+   *  It receives a setErrs object for that SET in a subsequent
+      communication with the Receiver
+
+   *  It has attempted to deliver the SET a maximum number of times and
+      has failed to communicate either due to communication errors or
+      lack of inclusion in ack or setErrs in subsequent communications
+      that were conducted for the maximum number of times.  The maximum
+      number of attempts MAY be set by the Transmitter for itself and
+      SHOULD be communicated offline to the Receivers
 
    Additionally consider Delivery Relieability aspects discussed in
    Section 4 of [RFC8935] .
@@ -490,9 +494,12 @@ Table of Contents
 
    It is RECOMMENDED that Transmitters implement a batching policy that
    sends a pending batch of SETs when either of the following conditions
-   is met: - The number of SETs in the batch reaches a configured size
-   limit.  - A configured amount of time (e.g., 1-2 seconds) has elapsed
-   since the oldest SET in the batch was generated.
+   is met:
+
+   *  The number of SETs in the batch reaches a configured size limit.
+
+   *  A configured amount of time (e.g., 1-2 seconds) has elapsed since
+      the oldest SET in the batch was generated.
 
    This ensures a balance between network efficiency and the real-time
    nature of the communication.
@@ -516,9 +523,9 @@ Table of Contents
    chronological dependence the receiver should look at the time related
    event claims.The
 
-   The Transmitter should not assume the ordered processing of the SETs
-   by the receiver sub-systems.  This specification does not add any
-   transactional requirements on the receiver.
+   aAThe Transmitter should not assume the ordered processing of the
+   SETs by the receiver sub-systems.  This specification does not add
+   any transactional requirements on the receiver.
 
    Additional security consideration in Section 5 of [RFC8935].
 

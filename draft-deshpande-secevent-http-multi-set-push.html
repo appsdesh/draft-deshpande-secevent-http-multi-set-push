@@ -14,24 +14,23 @@ are transmitted in the body of an HTTP POST request to an endpoint
 operated by the recipient, and the recipient indicates successful or
 failed transmission via the HTTP response. 
     " name="description">
-<meta content="xml2rfc 3.30.1" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="security event" name="keyword">
 <meta content="secevent" name="keyword">
 <meta content="draft-deshpande-secevent-http-multi-set-push-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.1
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.4.0
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
+    PyYAML 6.0.3
     requests 2.32.5
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.2.14
 -->
 <link href="draft-deshpande-secevent-http-multi-set-push.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1050,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Push-multi-SET</td>
-<td class="right">September 2025</td>
+<td class="right">December 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Deshpande &amp; Parecki</td>
-<td class="center">Expires 16 March 2026</td>
+<td class="center">Expires 25 June 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-deshpande-secevent-http-multi-set-push-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-12" class="published">12 September 2025</time>
+<time datetime="2025-12-22" class="published">22 December 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-16">16 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-06-25">25 June 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1129,7 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1505,11 +1504,19 @@ authorize itself to the Receiver.<a href="#section-4-2" class="pilcrow">¶</a></
       <h2 id="name-delivery-reliability">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-delivery-reliability" class="section-name selfRef">Delivery Reliability</a>
       </h2>
-<p id="section-5-1">A Transmitter <span class="bcp14">MUST</span> attempt to deliver any SETs it has previously attempted to deliver to a Receiver until:
-   - It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Receiver
-   - It receives a setErrs object for that SET in a subsequent communication with the Receiver
-   - It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts <span class="bcp14">MAY</span> be set by the Transmitter for itself and <span class="bcp14">SHOULD</span> be communicated offline to the Receivers<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">Additionally consider Delivery Relieability aspects discussed in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-4" class="relref">Section 4</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> .<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-1">A Transmitter <span class="bcp14">MUST</span> attempt to deliver any SETs it has previously attempted to deliver to a Receiver until:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5-2.1">
+          <p id="section-5-2.1.1">It receives an acknowledgement through the ack value for that SET in a subsequent communication with the Receiver<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.2">
+          <p id="section-5-2.2.1">It receives a setErrs object for that SET in a subsequent communication with the Receiver<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.3">
+          <p id="section-5-2.3.1">It has attempted to deliver the SET a maximum number of times and has failed to communicate either due to communication errors or lack of inclusion in ack or setErrs in subsequent communications that were conducted for the maximum number of times. The maximum number of attempts <span class="bcp14">MAY</span> be set by the Transmitter for itself and <span class="bcp14">SHOULD</span> be communicated offline to the Receivers<a href="#section-5-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-5-3">Additionally consider Delivery Relieability aspects discussed in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-4" class="relref">Section 4</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span> .<a href="#section-5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1561,10 +1568,16 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
         </h3>
 <p id="section-7.4-1">The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters <span class="bcp14">MUST NOT</span> unduly delay the transmission of events in an attempt to create larger batches.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
 <p id="section-7.4-2">Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.<a href="#section-7.4-2" class="pilcrow">¶</a></p>
-<p id="section-7.4-3">It is <span class="bcp14">RECOMMENDED</span> that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:
-    - The number of SETs in the batch reaches a configured size limit.
-    - A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.<a href="#section-7.4-3" class="pilcrow">¶</a></p>
-<p id="section-7.4-4">This ensures a balance between network efficiency and the real-time nature of the communication.<a href="#section-7.4-4" class="pilcrow">¶</a></p>
+<p id="section-7.4-3">It is <span class="bcp14">RECOMMENDED</span> that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:<a href="#section-7.4-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-7.4-4.1">
+            <p id="section-7.4-4.1.1">The number of SETs in the batch reaches a configured size limit.<a href="#section-7.4-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-7.4-4.2">
+            <p id="section-7.4-4.2.1">A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.<a href="#section-7.4-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-7.4-5">This ensures a balance between network efficiency and the real-time nature of the communication.<a href="#section-7.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="information-disclosure-in-error-responses">
@@ -1582,7 +1595,7 @@ appear in all capitals, as shown here.<a href="#section-6-1" class="pilcrow">¶<
 <a href="#section-7.6" class="section-number selfRef">7.6. </a><a href="#name-event-ordering-and-processi" class="section-name selfRef">Event Ordering and Processing Guarantees</a>
         </h3>
 <p id="section-7.6-1">This specification is a transport efficiency mechanism and it does not address transactional aspects of the request. Every SET is an independent event in the request to the receiver. The event ordering in the request does not imply any chronological depependence. For chronological dependence the receiver should look at the time related event claims.The<a href="#section-7.6-1" class="pilcrow">¶</a></p>
-<p id="section-7.6-2">The Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
+<p id="section-7.6-2">aAThe Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.<a href="#section-7.6-2" class="pilcrow">¶</a></p>
 <p id="section-7.6-3">Additional security consideration in <span><a href="https://rfc-editor.org/rfc/rfc8935#section-5" class="relref">Section 5</a> of [<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>.<a href="#section-7.6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
