@@ -301,8 +301,9 @@ The primary purpose of security event tokens is the timely communication of secu
 Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.
 
 It is RECOMMENDED that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:
-    - The number of SETs in the batch reaches a configured size limit.
-    - A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.
+
+- The number of SETs in the batch reaches a configured size limit.
+- A configured amount of time (e.g., 1-2 seconds) has elapsed since the oldest SET in the batch was generated.
 
 This ensures a balance between network efficiency and the real-time nature of the communication.
 
@@ -316,7 +317,7 @@ It is RECOMMENDED that the `setErrs` information is helpful without revealing se
 
 This specification is a transport efficiency mechanism and it does not address transactional aspects of the request. Every SET is an independent event in the request to the receiver. The event ordering in the request does not imply any chronological depependence. For chronological dependence the receiver should look at the time related event claims.The
 
- The Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
+aAThe Transmitter should not assume the ordered processing of the SETs by the receiver sub-systems. This specification does not add any transactional requirements on the receiver.
 
 Additional security consideration in {{Section 5 of RFC8935}}.
 
