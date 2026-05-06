@@ -109,7 +109,8 @@ A Transmitter may initiate communication with the Receiver in order to:
 
 It MUST contain the following fields:
 
-`sets` {#sets}
+### The `sets` Field {#sets}
+
 REQUIRED. A JSON object containing key-value pairs in which the key of a field is a string that contains the `jti` claim of the SET that is specified in the value of the field. This field MAY be an empty object to indicate that no SETs are being delivered by the initiator in this communication. The maximum number of SETs in a push MAY be set by the Transmitter for itself and SHOULD be communicated offline to the Receivers.
 
 
