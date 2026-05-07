@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-05T03:33:56.772063+00:00",
+  "timestamp": "2026-05-07T03:47:46.561364+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -112,24 +112,26 @@
       "id": "PR_kwDOPuUGn87P3Jym",
       "title": "Deb's feedback addressed",
       "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/3",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "appsdesh",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "@aaronpk ",
       "createdAt": "2026-04-03T19:46:24Z",
-      "updatedAt": "2026-04-08T01:21:30Z",
+      "updatedAt": "2026-05-05T17:22:56Z",
       "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "baseRefName": "main",
       "baseRefOid": "8c2bfba800696c658b70b81e1a75d2afa3a733a2",
       "headRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "headRefName": "debs-feedback",
       "headRefOid": "8ea9d89ae58f786c937c143522e615b323f1a24e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-05-05T17:22:56Z",
+      "mergedAt": "2026-05-05T17:22:56Z",
+      "mergedBy": "appsdesh",
+      "mergeCommit": {
+        "oid": "51d98a12d0ec096aeeba41ab0b09f645cb207d0b"
+      },
       "comments": [],
       "reviews": [
         {
