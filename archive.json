@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-26T03:36:01.775248+00:00",
+  "timestamp": "2026-07-28T03:15:36.886657+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -208,6 +208,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOPuUGn872mz2s",
+      "title": "Fix typos and minor grammar in the draft.",
+      "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/4",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This is 100% editorial and AI-generated, with the goal of making the draft easier for me and others to read.",
+      "createdAt": "2026-07-26T18:39:44Z",
+      "updatedAt": "2026-07-26T18:39:45Z",
+      "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
+      "baseRefName": "main",
+      "baseRefOid": "d6ab8248bfd750dd11ca3901f1053b076c6f923e",
+      "headRepository": "yaronf/draft-deshpande-secevent-http-multi-set-push",
+      "headRefName": "main",
+      "headRefOid": "e73cfd14972bbdd675f23dba7af9d3302c14611f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
