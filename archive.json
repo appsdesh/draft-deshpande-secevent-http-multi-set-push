@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-28T03:15:36.886657+00:00",
+  "timestamp": "2026-07-30T02:51:34.189215+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -214,20 +214,62 @@
       "id": "PR_kwDOPuUGn872mz2s",
       "title": "Fix typos and minor grammar in the draft.",
       "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "yaronf",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This is 100% editorial and AI-generated, with the goal of making the draft easier for me and others to read.",
       "createdAt": "2026-07-26T18:39:44Z",
-      "updatedAt": "2026-07-26T18:39:45Z",
+      "updatedAt": "2026-07-29T18:48:01Z",
       "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "baseRefName": "main",
       "baseRefOid": "d6ab8248bfd750dd11ca3901f1053b076c6f923e",
       "headRepository": "yaronf/draft-deshpande-secevent-http-multi-set-push",
       "headRefName": "main",
       "headRefOid": "e73cfd14972bbdd675f23dba7af9d3302c14611f",
+      "closedAt": "2026-07-29T18:48:00Z",
+      "mergedAt": "2026-07-29T18:48:00Z",
+      "mergedBy": "appsdesh",
+      "mergeCommit": {
+        "oid": "606a85615362b0e04509210a3c1c2f71422b79ad"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOPuUGn88AAAABHs7MOg",
+          "commit": {
+            "abbreviatedOid": "e73cfd1"
+          },
+          "author": "appsdesh",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-07-29T18:47:48Z",
+          "updatedAt": "2026-07-29T18:47:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOPuUGn874MpqZ",
+      "title": "Standardize on Recipient terminology, add replay/ordering guidance, and tighten security considerations",
+      "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/5",
+      "state": "OPEN",
+      "author": "appsdesh",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Replace remaining Receiver references with Recipient for consistency, update TLS RFC reference to RFC9846, clarify duplicate jti handling, event ordering guarantees, request size limits, and setErrs description guidance per review feedback.\r\n\r\n== Yaron's feedback\r\n\r\n- I have separately submitted a PR with numerous editorial nits, which if applied would make the draft that much easier to read.\r\n\r\n- This sentence is adopted from the original RFC. It was hard to read then, now it's become ungrammatical: \"Similar to [RFC8935] this specification makes mechanism for exchanging configuration metadata such as endpoint URLs, cryptographic keys, and possible implementation constraints such as buffer size limitations between the Transmitter and Recipient is out of scope but is expected to be defined by profiles of this specification.\" Also, please consider removing the expectation of future profiles, which are unlikely.\r\n\r\n- Reference for TLS 1.3 - replace RFC 8446 with the newer RFC 9846.\r\n\r\n- Sec. 4.2: are there no jti handling rules on the recipient side? Even if we don't mandate replay protection, shouldn't we at least say that the Recipient MAY silently drop a received duplicate jti? \r\n\r\n- Recipient vs. Receiver - please settle on one term across the document.\r\n\r\n- Sec. 4.3, \"It MUST contain the following fields:\" - what does \"it\" refer to?\r\n\r\n- Per RFC8935, both authentication_failed and access_denied appear to apply to the transmission as a whole and not an individual SET, i.e. they don't make sense in setErrs. Should we mention it in Sec. 4.4? Currently we only say, \"Error codes are described in Section 2.4 of [RFC8935].\"\r\n\r\n- 7.1: if the goal is to limit both CPU and memory consumption, then the Receiver must establish a maximum number of SETs as well as a maximum size of the whole POST request (in bytes).\r\n\r\n- 7.5: this section reads like a very vague and not at all useful warning. It can be improved by adding an example or two, e.g. \"do not echo tenant identifiers in 'description'\".\r\n\r\n- Arguably 7.6 is not a security consideration at all but rather a transport consideration, and thus could belong in Sec. 6.",
+      "createdAt": "2026-07-29T20:49:13Z",
+      "updatedAt": "2026-07-29T20:49:14Z",
+      "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
+      "baseRefName": "main",
+      "baseRefOid": "606a85615362b0e04509210a3c1c2f71422b79ad",
+      "headRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
+      "headRefName": "apoorva-yaronf-review",
+      "headRefOid": "e2e32ce473c2f21409a793d2287f2109e08fbd57",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
