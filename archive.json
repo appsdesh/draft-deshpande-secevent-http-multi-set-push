@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-30T02:51:34.189215+00:00",
+  "timestamp": "2026-08-02T03:33:35.701041+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -263,7 +263,7 @@
       "labels": [],
       "body": "Replace remaining Receiver references with Recipient for consistency, update TLS RFC reference to RFC9846, clarify duplicate jti handling, event ordering guarantees, request size limits, and setErrs description guidance per review feedback.\r\n\r\n== Yaron's feedback\r\n\r\n- I have separately submitted a PR with numerous editorial nits, which if applied would make the draft that much easier to read.\r\n\r\n- This sentence is adopted from the original RFC. It was hard to read then, now it's become ungrammatical: \"Similar to [RFC8935] this specification makes mechanism for exchanging configuration metadata such as endpoint URLs, cryptographic keys, and possible implementation constraints such as buffer size limitations between the Transmitter and Recipient is out of scope but is expected to be defined by profiles of this specification.\" Also, please consider removing the expectation of future profiles, which are unlikely.\r\n\r\n- Reference for TLS 1.3 - replace RFC 8446 with the newer RFC 9846.\r\n\r\n- Sec. 4.2: are there no jti handling rules on the recipient side? Even if we don't mandate replay protection, shouldn't we at least say that the Recipient MAY silently drop a received duplicate jti? \r\n\r\n- Recipient vs. Receiver - please settle on one term across the document.\r\n\r\n- Sec. 4.3, \"It MUST contain the following fields:\" - what does \"it\" refer to?\r\n\r\n- Per RFC8935, both authentication_failed and access_denied appear to apply to the transmission as a whole and not an individual SET, i.e. they don't make sense in setErrs. Should we mention it in Sec. 4.4? Currently we only say, \"Error codes are described in Section 2.4 of [RFC8935].\"\r\n\r\n- 7.1: if the goal is to limit both CPU and memory consumption, then the Receiver must establish a maximum number of SETs as well as a maximum size of the whole POST request (in bytes).\r\n\r\n- 7.5: this section reads like a very vague and not at all useful warning. It can be improved by adding an example or two, e.g. \"do not echo tenant identifiers in 'description'\".\r\n\r\n- Arguably 7.6 is not a security consideration at all but rather a transport consideration, and thus could belong in Sec. 6.",
       "createdAt": "2026-07-29T20:49:13Z",
-      "updatedAt": "2026-07-29T20:49:14Z",
+      "updatedAt": "2026-07-30T08:39:05Z",
       "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "baseRefName": "main",
       "baseRefOid": "606a85615362b0e04509210a3c1c2f71422b79ad",
@@ -274,7 +274,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "yaronf",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thank you, this addresses my review. The one thing left open is my earlier mail:\r\n\r\n> One remaining technical nit remains from the HTTPDir review: the document states that the Receiver \"processes\" a request before returning HTTP 202 (Accepted). Under HTTP semantics, 202 indicates acceptance for processing rather than completed processing, so replacing \"processing\" with \"accepting\" (or similar wording) would improve correctness.\r\n> Let me know if this was addressed and/or discussed with the reviewer.\r\n\r\nAs well as another comment that seems to have been missed:\r\n\r\n> References to RFC 7231 should be replaced by RFC 9110. [YS: plus you'd need to change respective section numbers.]\r\n\r\nOn a deeper review, I need to ask you to go back to the HTTPdir review - there's a few comments still open. Please document exactly what's you're accepting and what you're rejecting. Either on a mailing list or as a GH issue.\r\n",
+          "createdAt": "2026-07-30T07:52:57Z",
+          "updatedAt": "2026-07-30T08:39:05Z"
+        }
+      ],
       "reviews": []
     }
   ]
