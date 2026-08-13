@@ -5,7 +5,7 @@
 Security Events                                             A. Deshpande
 Internet-Draft                                                A. Parecki
 Intended status: Standards Track                                    Okta
-Expires: 30 January 2027                                    29 July 2026
+Expires: 14 February 2027                                 13 August 2026
 
 
 Push-Based Delivery For Multiple Security Event Tokens (SET) Using HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 January 2027.
+   This Internet-Draft will expire on 14 February 2027.
 
 Copyright Notice
 
@@ -86,13 +86,13 @@ Table of Contents
        4.4.3.  Error Response
    5.  Authentication and Authorization
    6.  Delivery Reliability
+     6.1.  Event Ordering and Processing Guarantees
    7.  Security Considerations
      7.1.  Too many SETs in the request
      7.2.  Authentication and Authorization
      7.3.  HTTP and TLS
      7.4.  Event Delivery Latency
      7.5.  Information Disclosure in Error Responses
-     7.6.  Event Ordering and Processing Guarantees
    8.  Privacy Considerations
    9.  IANA Considerations
    10. Normative References
@@ -105,7 +105,7 @@ Table of Contents
    Security Event Token (SET) [RFC8417] can deliver multiple SETs to an
    intended SET Recipient via HTTP POST [RFC7231] over TLS in a single
    POST request.  [RFC8935] focuses on the delivery of the single SET to
-   the Receiver.  When sending a large number of SETs, sending them one
+   the Recipient.  When sending a large number of SETs, sending them one
    by one is inefficient.  This specification defines a way to send
    batches of SETs in a single POST request for more efficient
    transport.
@@ -114,15 +114,15 @@ Table of Contents
    following scenarios:
 
    *  The Transmitter of the SET has multiple outstanding SETs to be
-      communicated to the Receiver
+      communicated to the Recipient
 
    *  The Transmitter wants to reduce the number of outbound requests to
-      the same Receiver to optimize performance and avoid being rate-
+      the same Recipient to optimize performance and avoid being rate-
       limited when the number of SETs to be communicated is high
 
-   *  The Receiver wants to optimize processing multiple SETs
+   *  The Recipient wants to optimize processing multiple SETs
 
-   *  The Receiver wants to acknowledge or provide error responses to
+   *  The Recipient wants to acknowledge or provide error responses to
       previously received SETs, but wants to do so asynchronously,
       rather than within the response to the same HTTP POST in which it
       received the SET
@@ -131,12 +131,10 @@ Table of Contents
    the [RFC8935] and make it more extensible to support multiple SETs
    per one outbound POST request.
 
-   Similar to [RFC8935], this specification makes the mechanism for
-   exchanging configuration metadata such as endpoint URLs,
-   cryptographic keys, and possible implementation constraints such as
-   buffer size limitations between the Transmitter and Recipient out of
-   scope but is expected to be defined by profiles of this
-   specification.
+   Similar to [RFC8935], this specification does not define how the
+   Transmitter and Recipient exchange configuration metadata, such as
+   endpoint URLs, cryptographic keys, and implementation constraints
+   like buffer size limitations.
 
 2.  Conventions and Definitions
 
@@ -148,24 +146,24 @@ Table of Contents
 
 3.  Push endpoint to receive multiple SETs
 
-   Each Receiver that supports this specification MUST support a new
+   Each Recipient that supports this specification MUST support a new
    push endpoint that receives multiple SETs in a single request.  This
    endpoint MUST be capable of serving HTTP POST [RFC7231] requests.
-   This endpoint MUST be TLS [RFC8446] enabled and MUST reject any
+   This endpoint MUST be TLS [RFC9846] enabled and MUST reject any
    communication not using TLS.  How the Transmitter obtains this
-   endpoint from the Receiver is outside the scope of this
+   endpoint from the Recipient is outside the scope of this
    specification.
 
 4.  SET Delivery Semantics
 
    In this SET delivery using HTTP over TLS, a Transmitter delivers zero
    or more SETs in a JavaScript Object Notation (JSON) [RFC8259]
-   document to the SET Receiver.  The Receiver either acknowledges the
+   document to the SET Recipient.  The Recipient either acknowledges the
    successful receipt of the SETs or indicates failure in processing of
    one or more SETs in a JSON document to the Transmitter.
 
    The Transmitter SHOULD periodically send a request with zero SETs to
-   allow the Receiver to respond back with an ack or err for previously
+   allow the Recipient to respond back with an ack or err for previously
    transmitted SETs that have not yet been acknowledged.
 
    After successful (acknowledged) SET delivery, SET Transmitters are
@@ -188,11 +186,11 @@ Table of Contents
 
 4.1.  Acknowledgement for all SETs
 
-   A Receiver MUST ensure that it includes the jti value of each SET it
+   A Recipient MUST ensure that it includes the jti value of each SET it
    receives, either in an ack or a setErrs value, to the Transmitter
    from which it received the SETs.  A Transmitter SHOULD retry sending
    the same SET again if it was never responded to either in an ack
-   value or in a setErrs value by a Receiver in a reasonable time
+   value or in a setErrs value by a Recipient in a reasonable time
    period.  A Transmitter MAY limit the number of times it retries
    sending a SET.  A Transmitter MAY publish the retry time period and
    maximum number of retries to its peers, but such publication is
@@ -207,6 +205,11 @@ Table of Contents
    setErrs value, then it MUST generate a new SET that has a new (and
    unique) jti value.
 
+   This specification does not mandate replay protection on the
+   Recipient.  However, if a Recipient receives a SET with a jti value
+   that it has already acknowledged or reported an error for, it MAY
+   silently drop the duplicate rather than reprocessing it.
+
 4.3.  Transmitting SETs
 
    To transmit a SET to a SET Recipient, the SET Transmitter makes an
@@ -215,14 +218,14 @@ Table of Contents
    "application/json" and the Accept header field MUST be "application/
    json".
 
-   A Transmitter may initiate communication with the Receiver in order
+   A Transmitter may initiate communication with the Recipient in order
    to:
 
-   *  Send SETs to the Receiver
+   *  Send SETs to the Recipient
 
    *  Receive acknowledgement of SETs in response
 
-   It MUST contain the following fields:
+   The body of this request MUST contain the following fields:
 
 4.3.1.  The sets Field
 
@@ -232,7 +235,7 @@ Table of Contents
    object to indicate that no SETs are being delivered by the initiator
    in this communication.  The maximum number of SETs in a push MAY be
    set by the Transmitter for itself and SHOULD be communicated offline
-   to the Receivers.
+   to the Recipients.
 
    The following is a non-normative example of a request.
 
@@ -267,7 +270,7 @@ Table of Contents
    _Figure 1: Example of SET Transmission_
 
    In the above example, the Transmitter is sending 2 SETs to the
-   Receiver.
+   Recipient.
 
      {
        "sets": {}
@@ -276,7 +279,7 @@ Table of Contents
    _Figure 2: Example of empty SET transmission_
 
    In the above example, the Transmitter is sending zero SETs to the
-   Receiver.  This placeholder/empty request allows the Receiver to
+   Recipient.  This placeholder/empty request allows the Recipient to
    respond back with ack/err for previously transmitted SETs.
 
    The SET Transmitter MAY include in the request an Accept-Language
@@ -285,7 +288,7 @@ Table of Contents
 
 4.4.  Response Communication
 
-   A Receiver MUST respond to the communication by sending an HTTP
+   A Recipient MUST respond to the communication by sending an HTTP
    response.  The body of this response is of the content type
    "application/json".  It contains the following fields:
 
@@ -302,6 +305,11 @@ Table of Contents
 
    err REQUIRED.  The short reason why the specified SET failed to be
    processed.  Error codes are described in Section 2.4 of [RFC8935].
+   Note that the authentication_failed and access_denied codes described
+   therein apply to the SET Transmission Request as a whole rather than
+   to an individual SET, and therefore MUST NOT be used in a setErrs
+   value; such failures MUST instead be reported using the err field
+   described in Section 4.4.2.
 
    description OPTIONAL.  An explanation of why the SET failed to be
    processed.
@@ -321,7 +329,7 @@ Table of Contents
 
 4.4.1.  Success Response
 
-   If the Receiver is successful in processing the request, it MUST
+   If the Recipient is successful in processing the request, it MUST
    return the HTTP status code 202 (Accepted).  The response MUST have
    the content-type "application/json".
 
@@ -336,8 +344,8 @@ Table of Contents
 
    _Figure 3: Example of SET Transmission response with ack_
 
-   In the above example, the Receiver acknowledges one of the SETs it
-   previously received.  There are no errors reported by the Receiver.
+   In the above example, the Recipient acknowledges one of the SETs it
+   previously received.  There are no errors reported by the Recipient.
 
      HTTP/1.1 202 Accepted
      Content-type: application/json
@@ -358,8 +366,8 @@ Table of Contents
 
    _Figure 4: Example of SET Transmission response, ack and errors_
 
-   In the above example, the Receiver acknowledges three of the SETs it
-   previously received.  There are errors reported by the Receiver for
+   In the above example, the Recipient acknowledges three of the SETs it
+   previously received.  There are errors reported by the Recipient for
    acknowledging one SET.
 
 4.4.2.  Failure Response
@@ -403,7 +411,7 @@ Table of Contents
    *  too_many_sets (Transmitter included too many SETs in a single
       request, this is an indication for the Transmitter to make a
       request with a lower number of SETs or to comply with max SETs
-      count that Receiver published outside of this spec)
+      count that Recipient published outside of this spec)
 
       HTTP/1.1 400 Bad Request
       Content-Language: en-US
@@ -428,22 +436,22 @@ Table of Contents
 
 4.4.3.  Error Response
 
-   The Receiver MUST respond with an error response if it is unable to
+   The Recipient MUST respond with an error response if it is unable to
    process the request.  The error response MUST include the appropriate
    error code as described in Section 2.4 of [RFC8935].
 
 5.  Authentication and Authorization
 
-   The Transmitter MUST verify the identity of the Receiver by
-   validating the TLS certificate presented by the Receiver during the
+   The Transmitter MUST verify the identity of the Recipient by
+   validating the TLS certificate presented by the Recipient during the
    TLS handshake, and verifying that it is the intended recipient of the
    request, before sending the SETs.
 
-   How the Transmitter and Receiver agree on authorization of the
+   How the Transmitter and Recipient agree on authorization of the
    request is out of scope of this document.
 
-   This section describes server-side authentication of the Receiver by
-   the Transmitter.  Authentication of the Transmitter by the Receiver
+   This section describes server-side authentication of the Recipient by
+   the Transmitter.  Authentication of the Transmitter by the Recipient
    (e.g., via OAuth tokens, mutual TLS, or other mechanisms) is out of
    scope of this document and is expected to be defined by profiles of
    this specification.
@@ -451,27 +459,40 @@ Table of Contents
 6.  Delivery Reliability
 
    A Transmitter MUST attempt to deliver any SETs it has previously
-   attempted to deliver to a Receiver until:
+   attempted to deliver to a Recipient until:
 
    *  It receives an acknowledgement through the ack value for that SET
-      in a subsequent communication with the Receiver
+      in a subsequent communication with the Recipient
 
    *  It receives a setErrs object for that SET in a subsequent
-      communication with the Receiver
+      communication with the Recipient
 
    *  It has attempted to deliver the SET a maximum number of times and
       has failed to communicate either due to communication errors or
       lack of inclusion in ack or setErrs in subsequent communications
       that were conducted for the maximum number of times.  The maximum
       number of attempts MAY be set by the Transmitter for itself and
-      SHOULD be communicated offline to the Receivers
+      SHOULD be communicated offline to the Recipients
 
    Additionally consider Delivery Reliability aspects discussed in
    Section 4 of [RFC8935].
 
+6.1.  Event Ordering and Processing Guarantees
+
+   This specification is a transport efficiency mechanism and it does
+   not address transactional aspects of the request.  Every SET is an
+   independent event in the request to the Recipient.  The event
+   ordering in the request does not imply any chronological dependence.
+   For chronological dependence, the Recipient should look at the time-
+   related event claims.
+
+   A Transmitter should not assume the ordered processing of the SETs by
+   the Recipient sub-systems.  This specification does not add any
+   transactional requirements on the Recipient.
+
 7.  Security Considerations
 
-   The Security Considerations of [RFC8935], [RFC8446], and Section 17
+   The Security Considerations of [RFC8935], [RFC9846], and Section 17
    of [RFC9110] apply to this specification.
 
 7.1.  Too many SETs in the request
@@ -479,35 +500,39 @@ Table of Contents
    This mechanism allows a Transmitter to send a large number of SETs in
    a single request.  A malicious or misconfigured Transmitter could
    send an extremely large payload, attempting to exhaust memory or CPU
-   resources on the Receiver during JSON parsing or SET validation.
+   resources on the Recipient during JSON parsing or SET validation.
 
-   Receivers MUST protect themselves against such attacks.  It is
-   RECOMMENDED that Receivers establish and document a reasonable upper
-   limit on the number of SETs they will process in a single request.
-   The Transmitter MUST obey the maximum number of SETs to be
-   communicated to the Receiver.  This will avoid any potential
-   truncations/loss of information at the Receiver.
+   Recipients MUST protect themselves against such attacks.  It is
+   RECOMMENDED that Recipients establish and document a reasonable upper
+   limit on both the number of SETs and the total size, in bytes, of the
+   request body they will process in a single request.  Limiting the
+   number of SETs alone is insufficient, since a request containing few
+   but excessively large SETs can still exhaust memory or CPU resources.
+   The Transmitter MUST obey the maximum number of SETs and maximum
+   request body size communicated by the Recipient.  This will avoid any
+   potential truncations/loss of information at the Recipient.
 
-   If a Receiver receives a batch exceeding this limit, it SHOULD reject
-   the entire request with a 413 Payload Too Large HTTP status code.
+   If a Recipient receives a request exceeding either limit, it SHOULD
+   reject the entire request with a 413 Payload Too Large HTTP status
+   code.
 
-   How the Receiver conveys this upper limit to Transmitters is outside
-   the scope of this specification (see Section 4.3.1 for the sets field
-   definition).
+   How the Recipient conveys these upper limits to Transmitters is
+   outside the scope of this specification (see Section 4.3.1 for the
+   sets field definition).
 
 7.2.  Authentication and Authorization
 
    The Transmitter MUST follow the procedures described in section
    Section 5 in order to securely authenticate and authorize the
-   Receiver.
+   Recipient.
 
 7.3.  HTTP and TLS
 
-   The Transmitter MUST use TLS [RFC8446] to communicate with the
-   Receiver and is subject to the security considerations of HTTP
+   The Transmitter MUST use TLS [RFC9846] to communicate with the
+   Recipient and is subject to the security considerations of HTTP
    Section 17 of [RFC9110].
 
-   Failure to properly validate the Receiver's TLS certificate could
+   Failure to properly validate the Recipient's TLS certificate could
    allow a Transmitter to send SETs to an impersonating endpoint,
    resulting in the disclosure of sensitive security event information
    to an unauthorized party.
@@ -546,19 +571,11 @@ Table of Contents
 
    It is RECOMMENDED that setErrs information be designed to be helpful
    without revealing sensitive information about internal architecture.
-
-7.6.  Event Ordering and Processing Guarantees
-
-   This specification is a transport efficiency mechanism and it does
-   not address transactional aspects of the request.  Every SET is an
-   independent event in the request to the Receiver.  The event ordering
-   in the request does not imply any chronological dependence.  For
-   chronological dependence, the Receiver should look at the time-
-   related event claims.
-
-   A Transmitter should not assume the ordered processing of the SETs by
-   the Receiver sub-systems.  This specification does not add any
-   transactional requirements on the Receiver.
+   For example, a description SHOULD NOT echo back tenant identifiers,
+   internal user identifiers, or other values that could enable an
+   attacker to enumerate valid accounts or infer details of the
+   Recipient's internal architecture, such as stack traces or database
+   identifiers.
 
    Additional security considerations in Section 5 of [RFC8935].
 
@@ -600,10 +617,6 @@ Table of Contents
               DOI 10.17487/RFC8417, July 2018,
               <https://www.rfc-editor.org/rfc/rfc8417>.
 
-   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
-              <https://www.rfc-editor.org/rfc/rfc8446>.
-
    [RFC8935]  Backman, A., Ed., Jones, M., Ed., Scurtescu, M., Ansari,
               M., and A. Nadalin, "Push-Based Security Event Token (SET)
               Delivery Using HTTP", RFC 8935, DOI 10.17487/RFC8935,
@@ -618,6 +631,10 @@ Table of Contents
               Protected Resource Metadata", RFC 9728,
               DOI 10.17487/RFC9728, April 2025,
               <https://www.rfc-editor.org/rfc/rfc9728>.
+
+   [RFC9846]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 9846, DOI 10.17487/RFC9846, July 2026,
+              <https://www.rfc-editor.org/rfc/rfc9846>.
 
 Acknowledgments
 
