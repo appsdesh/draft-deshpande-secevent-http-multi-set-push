@@ -119,6 +119,11 @@ REQUIRED. A JSON object containing key-value pairs in which the key of a field i
 
 The following is a non-normative example of a request.
 
+      POST /push HTTP/1.1
+      Host: recipient.example.com
+      Content-Type: application/secevents+json
+      Accept: application/json
+
       {
         "sets": {
           "4d3559ec67504aaba65d40b0363faad8":
@@ -150,6 +155,11 @@ The following is a non-normative example of a request.
 _Figure 1: Example of SET Transmission_
 
 In the above example, the Transmitter is sending 2 SETs to the Recipient.
+
+      POST /push HTTP/1.1
+      Host: recipient.example.com
+      Content-Type: application/secevents+json
+      Accept: application/json
 
       {
         "sets": {}
