@@ -40,6 +40,7 @@ normative:
    RFC9728:
    RFC8259:
    RFC2277:
+   RFC6838:
 
 informative:
 
@@ -100,7 +101,7 @@ A Transmitter MUST NOT send two SETs with the same `jti` value if the SET has be
 
 ## Transmitting SETs
 
-To transmit a SET to a SET Recipient, the SET Transmitter makes an HTTP POST request to a TLS-enabled HTTP endpoint provided by the SET Recipient. The body of this request is of the content type `"application/json"` and the Accept header field MUST be `"application/json"`.
+To transmit a SET to a SET Recipient, the SET Transmitter makes an HTTP POST request to a TLS-enabled HTTP endpoint provided by the SET Recipient. The body of this request is of the content type `"application/secevents+json"` (see {{media-type-registration}}) and the Accept header field MUST be `"application/json"`.
 
 A Transmitter may initiate communication with the Receiver in order to:
 
@@ -273,7 +274,7 @@ A Transmitter MUST attempt to deliver any SETs it has previously attempted to de
 
 Additionally consider Delivery Reliability aspects discussed in {{Section 4 of RFC8935}}.
 
-# Security Considerations
+# Security Considerations {#security-considerations}
 
 The Security Considerations of {{RFC8935}}, {{RFC8446}}, and {{Section 17 of RFC9110}} apply to this specification.
 
@@ -331,7 +332,34 @@ Privacy Considerations from {{Section 6 of RFC8935}} apply.
 
 # IANA Considerations
 
-This document has no IANA actions.
+This document registers the `application/secevents+json` media type in the "Media Types" registry {{IANA.MediaTypes}}.
+
+## Media Type Registration {#media-type-registration}
+
+### Registry Contents
+
+This section registers the `application/secevents+json` media type {{RFC6838}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}. This media type is used to indicate that the content is a JSON {{RFC8259}} object carrying a batch of Security Event Tokens (SETs), as described in {{sets}}.
+
+- Type name: application
+- Subtype name: secevents+json
+- Required parameters: N/A
+- Optional parameters: N/A
+- Encoding considerations: 8bit; the content is a JSON object as defined in {{RFC8259}} and is always encoded using UTF-8
+- Security considerations: See {{security-considerations}} of this document and {{Section 5 of RFC8935}}
+- Interoperability considerations: N/A
+- Published specification: {{sets}} of this document
+- Applications that use this media type: Applications that deliver batches of Security Event Tokens (SETs) over HTTP
+- Fragment identifier considerations: N/A
+- Additional information:
+  - Magic number(s): N/A
+  - File extension(s): N/A
+  - Macintosh file type code(s): N/A
+- Person &amp; email address to contact for further information: Apoorva Deshpande, apoorva.deshpande@okta.com
+- Intended usage: COMMON
+- Restrictions on usage: none
+- Author: Apoorva Deshpande, apoorva.deshpande@okta.com
+- Change controller: IETF
+- Provisional registration? No
 
 --- back
 
