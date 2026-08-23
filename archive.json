@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-20T01:38:45.831302+00:00",
+  "timestamp": "2026-08-23T01:46:54.257864+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -339,24 +339,26 @@
       "id": "PR_kwDOPuUGn87-5WEZ",
       "title": "Darrel's feedback",
       "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/7",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "appsdesh",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Incorporating most of the suggestions from Darrel https://lists.w3.or\u2026g/Archives/Public/ietf-http-wg/2025OctDec/0216.html\r\n\r\n3.3 - Registering an application/secevents+json media type\r\n3.4 - all RFC 7231 references updated to RFC 9110 (\u00a715 for status codes, \u00a712.5.4 for Accept-Language); RFC 7231 removed from normative refs. \r\n3.4.1 - \"processing\" \u2192 \"accepting\" for the 202 response. \r\n3.4.2 - Failure Response now uses RFC 9457 application/problem+json, with err kept as an extension member. \r\n3.4.3 - redundant \"Error Response\" section removed. \r\n3.1 - already fixed in a prior revision (no change needed).\r\n",
       "createdAt": "2026-08-14T02:36:21Z",
-      "updatedAt": "2026-08-15T00:08:41Z",
+      "updatedAt": "2026-08-21T16:47:50Z",
       "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "baseRefName": "main",
       "baseRefOid": "e2e5487b8cfafdb1775aad1720bc4957ce4b5d8f",
       "headRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
       "headRefName": "darrel-httpdir-review-clean",
       "headRefOid": "94963a53ee9b81d4f73ba4e2d8ba33af0f29c8a7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-21T16:47:50Z",
+      "mergedAt": "2026-08-21T16:47:50Z",
+      "mergedBy": "appsdesh",
+      "mergeCommit": {
+        "oid": "227336652645624a7769f25018fd82111988eea7"
+      },
       "comments": [],
       "reviews": [
         {
