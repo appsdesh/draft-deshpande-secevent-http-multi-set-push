@@ -5,7 +5,7 @@
 Security Events                                             A. Deshpande
 Internet-Draft                                                A. Parecki
 Intended status: Standards Track                                    Okta
-Expires: 14 February 2027                                 13 August 2026
+Expires: 25 February 2027                                 24 August 2026
 
 
 Push-Based Delivery For Multiple Security Event Tokens (SET) Using HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 February 2027.
+   This Internet-Draft will expire on 25 February 2027.
 
 Copyright Notice
 
@@ -83,7 +83,6 @@ Table of Contents
      4.4.  Response Communication
        4.4.1.  Success Response
        4.4.2.  Failure Response
-       4.4.3.  Error Response
    5.  Authentication and Authorization
    6.  Delivery Reliability
      6.1.  Event Ordering and Processing Guarantees
@@ -95,7 +94,11 @@ Table of Contents
      7.5.  Information Disclosure in Error Responses
    8.  Privacy Considerations
    9.  IANA Considerations
-   10. Normative References
+     9.1.  Media Type Registration
+       9.1.1.  Registry Contents
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -103,7 +106,7 @@ Table of Contents
 
    This specification defines a mechanism by which a Transmitter of a
    Security Event Token (SET) [RFC8417] can deliver multiple SETs to an
-   intended SET Recipient via HTTP POST [RFC7231] over TLS in a single
+   intended SET Recipient via HTTP POST [RFC9110] over TLS in a single
    POST request.  [RFC8935] focuses on the delivery of the single SET to
    the Recipient.  When sending a large number of SETs, sending them one
    by one is inefficient.  This specification defines a way to send
@@ -148,7 +151,7 @@ Table of Contents
 
    Each Recipient that supports this specification MUST support a new
    push endpoint that receives multiple SETs in a single request.  This
-   endpoint MUST be capable of serving HTTP POST [RFC7231] requests.
+   endpoint MUST be capable of serving HTTP POST [RFC9110] requests.
    This endpoint MUST be TLS [RFC9846] enabled and MUST reject any
    communication not using TLS.  How the Transmitter obtains this
    endpoint from the Recipient is outside the scope of this
@@ -215,8 +218,8 @@ Table of Contents
    To transmit a SET to a SET Recipient, the SET Transmitter makes an
    HTTP POST request to a TLS-enabled HTTP endpoint provided by the SET
    Recipient.  The body of this request is of the content type
-   "application/json" and the Accept header field MUST be "application/
-   json".
+   "application/secevents+json" (see Section 9.1) and the Accept header
+   field MUST be "application/json".
 
    A Transmitter may initiate communication with the Recipient in order
    to:
@@ -238,6 +241,11 @@ Table of Contents
    to the Recipients.
 
    The following is a non-normative example of a request.
+
+     POST /push HTTP/1.1
+     Host: recipient.example.com
+     Content-Type: application/secevents+json
+     Accept: application/json
 
      {
        "sets": {
@@ -271,6 +279,11 @@ Table of Contents
 
    In the above example, the Transmitter is sending 2 SETs to the
    Recipient.
+
+     POST /push HTTP/1.1
+     Host: recipient.example.com
+     Content-Type: application/secevents+json
+     Accept: application/json
 
      {
        "sets": {}
@@ -320,8 +333,8 @@ Table of Contents
    the SET Recipient can provide error descriptions in multiple
    languages, they SHOULD choose the language to use according to the
    value of the Accept-Language header field sent by the SET Transmitter
-   in the transmission request, as described in Section 5.3.5 of
-   [RFC7231].  If the SET Transmitter did not send an Accept-Language
+   in the transmission request, as described in Section 12.5.4 of
+   [RFC9110].  If the SET Transmitter did not send an Accept-Language
    header field, or if the SET Recipient does not support any of the
    languages included in the header field, the SET Recipient MUST
    respond with messages that are understandable by an English-speaking
@@ -329,7 +342,7 @@ Table of Contents
 
 4.4.1.  Success Response
 
-   If the Recipient is successful in processing the request, it MUST
+   If the Recipient is successful in accepting the request, it MUST
    return the HTTP status code 202 (Accepted).  The response MUST have
    the content-type "application/json".
 
@@ -372,60 +385,60 @@ Table of Contents
 
 4.4.2.  Failure Response
 
-   In the event of a general HTTP error condition, the SET Recipient
-   responds with the applicable HTTP Status Code, as defined in
-   Section 6 of [RFC7231].
+   In the event of a general HTTP error condition that is not specific
+   to an individual SET, the SET Recipient responds with the applicable
+   HTTP status code, as defined in Section 15 of [RFC9110].
 
-   When the SET Recipient detects an error parsing, or authenticating a
-   SET transmitted in a SET Transmission Request, the SET Recipient
-   SHALL respond with an HTTP Response Status Code of 400 (Bad Request).
-   The Content-Type header field of this response MUST be "application/
-   json", and the body MUST be a UTF-8 encoded JSON [RFC8259] object
-   containing the following name/value pairs:
+   When the SET Recipient rejects the request as a whole (for example,
+   because the request is malformed, or the Transmitter is not
+   authenticated or authorized), the SET Recipient SHOULD describe the
+   failure using the problem details format defined in [RFC9457].  The
+   Content-Type header field of such a response MUST be "application/
+   problem+json".  In addition to the members defined in [RFC9457], the
+   response MAY include the following extension member:
 
-   err REQUIRED.  The short reason why the API failed to process the
-   request.  (Not specific to any SETs, but usually indicates service
-   level failure or processing error)
-
-   description OPTIONAL.  A UTF-8 string containing a human-readable
-   description of the error that may provide additional diagnostic
-   information.  The exact content of this field is implementation
-   specific.
+   err OPTIONAL.  A short, machine-readable code identifying the reason
+   the request failed.  This code is not specific to any individual SET;
+   it indicates a request-level or service-level failure.
 
    Note that failure responses in this specification are not specific to
-   any failures related to any specific SET processing.  SET-specific
-   errors should be communicated by a success response payload defined
-   in the Section 4.4.1 Section.
+   failures related to any individual SET.  SET-specific errors are
+   communicated in a success response payload as defined in the
+   Section 4.4.1 Section.
 
-   Example error codes that can indicate API level failures MAY include
-   but are not limited to:
+   Example values for the err extension member that can indicate
+   request-level failures include, but are not limited to:
 
    *  invalid_request (request is malformed)
 
    *  authentication_failed (authentication token provided by the
       Transmitter is expired, revoked or invalid)
 
-   *  access_denied (The Transmitter does not have adequate permissions
-      to invoke this API).
+   *  access_denied (the Transmitter does not have adequate permissions
+      to invoke this API)
 
-   *  too_many_sets (Transmitter included too many SETs in a single
-      request, this is an indication for the Transmitter to make a
-      request with a lower number of SETs or to comply with max SETs
-      count that Recipient published outside of this spec)
+   *  too_many_sets (the Transmitter included too many SETs in a single
+      request; this is an indication for the Transmitter to make a
+      request with a lower number of SETs or to comply with the maximum
+      SET count that the Recipient published outside of this
+      specification)
 
       HTTP/1.1 400 Bad Request
       Content-Language: en-US
-      Content-Type: application/json
+      Content-Type: application/problem+json
 
       {
-        "err": "authentication_failed",
-        "description": "Access token has expired."
+        "type": "https://example.com/probs/authentication-failed",
+        "title": "Authentication failed",
+        "status": 400,
+        "detail": "Access token has expired.",
+        "err": "authentication_failed"
       }
 
    _Figure 5: Example Error Response (authentication_failed)_
 
-   Above non-normative example error response indicating that the access
-   token included in the request is expired.
+   The non-normative example above indicates that the access token
+   included in the request is expired.
 
 4.4.2.1.  Out of order delivery
 
@@ -433,12 +446,6 @@ Table of Contents
    correspond to the SETs received in the same Request to which the
    Response is being sent.  They MAY consist of values received in
    previous Requests.
-
-4.4.3.  Error Response
-
-   The Recipient MUST respond with an error response if it is unable to
-   process the request.  The error response MUST include the appropriate
-   error code as described in Section 2.4 of [RFC8935].
 
 5.  Authentication and Authorization
 
@@ -585,9 +592,66 @@ Table of Contents
 
 9.  IANA Considerations
 
-   This document has no IANA actions.
+   This document registers the application/secevents+json media type in
+   the "Media Types" registry [IANA.media-types].
 
-10.  Normative References
+9.1.  Media Type Registration
+
+9.1.1.  Registry Contents
+
+   This section registers the application/secevents+json media type
+   [RFC6838] in the "Media Types" registry [IANA.media-types] in the
+   manner described in [RFC6838].  This media type is used to indicate
+   that the content is a JSON [RFC8259] object carrying a batch of
+   Security Event Tokens (SETs), as described in Section 4.3.1.
+
+   *  Type name: application
+
+   *  Subtype name: secevents+json
+
+   *  Required parameters: N/A
+
+   *  Optional parameters: N/A
+
+   *  Encoding considerations: 8bit; the content is a JSON object as
+      defined in [RFC8259] and is always encoded using UTF-8
+
+   *  Security considerations: See Section 7 of this document and
+      Section 5 of [RFC8935]
+
+   *  Interoperability considerations: N/A
+
+   *  Published specification: Section 4.3.1 of this document
+
+   *  Applications that use this media type: Applications that deliver
+      batches of Security Event Tokens (SETs) over HTTP
+
+   *  Fragment identifier considerations: N/A
+
+   *  Additional information:
+
+      -  Magic number(s): N/A
+
+      -  File extension(s): N/A
+
+      -  Macintosh file type code(s): N/A
+
+   *  Person & email address to contact for further information: Apoorva
+      Deshpande, apoorva.deshpande@okta.com
+
+   *  Intended usage: COMMON
+
+   *  Restrictions on usage: none
+
+   *  Author: Apoorva Deshpande, apoorva.deshpande@okta.com
+
+   *  Change controller: IETF
+
+   *  Provisional registration?  No
+
+10.  References
+
+10.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -598,10 +662,10 @@ Table of Contents
               Languages", BCP 18, RFC 2277, DOI 10.17487/RFC2277,
               January 1998, <https://www.rfc-editor.org/rfc/rfc2277>.
 
-   [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <https://www.rfc-editor.org/rfc/rfc7231>.
+   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
+              Specifications and Registration Procedures", BCP 13,
+              RFC 6838, DOI 10.17487/RFC6838, January 2013,
+              <https://www.rfc-editor.org/rfc/rfc6838>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -627,6 +691,10 @@ Table of Contents
               DOI 10.17487/RFC9110, June 2022,
               <https://www.rfc-editor.org/rfc/rfc9110>.
 
+   [RFC9457]  Nottingham, M., Wilde, E., and S. Dalal, "Problem Details
+              for HTTP APIs", RFC 9457, DOI 10.17487/RFC9457, July 2023,
+              <https://www.rfc-editor.org/rfc/rfc9457>.
+
    [RFC9728]  Jones, M.B., Hunt, P., and A. Parecki, "OAuth 2.0
               Protected Resource Metadata", RFC 9728,
               DOI 10.17487/RFC9728, April 2025,
@@ -635,6 +703,12 @@ Table of Contents
    [RFC9846]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 9846, DOI 10.17487/RFC9846, July 2026,
               <https://www.rfc-editor.org/rfc/rfc9846>.
+
+10.2.  Informative References
+
+   [IANA.media-types]
+              IANA, "Media Types",
+              <https://www.iana.org/assignments/media-types>.
 
 Acknowledgments
 
