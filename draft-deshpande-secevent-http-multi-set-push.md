@@ -43,6 +43,7 @@ normative:
    RFC6838:
 
 informative:
+   IANA.media-types:
 
 
 --- abstract
@@ -344,13 +345,13 @@ Privacy Considerations from {{Section 6 of RFC8935}} apply.
 
 # IANA Considerations
 
-This document registers the `application/secevents+json` media type in the "Media Types" registry {{IANA.MediaTypes}}.
+This document registers the `application/secevents+json` media type in the "Media Types" registry {{IANA.media-types}}.
 
 ## Media Type Registration {#media-type-registration}
 
 ### Registry Contents
 
-This section registers the `application/secevents+json` media type {{RFC6838}} in the "Media Types" registry {{IANA.MediaTypes}} in the manner described in {{RFC6838}}. This media type is used to indicate that the content is a JSON {{RFC8259}} object carrying a batch of Security Event Tokens (SETs), as described in {{sets}}.
+This section registers the `application/secevents+json` media type {{RFC6838}} in the "Media Types" registry {{IANA.media-types}} in the manner described in {{RFC6838}}. This media type is used to indicate that the content is a JSON {{RFC8259}} object carrying a batch of Security Event Tokens (SETs), as described in {{sets}}.
 
 - Type name: application
 - Subtype name: secevents+json
