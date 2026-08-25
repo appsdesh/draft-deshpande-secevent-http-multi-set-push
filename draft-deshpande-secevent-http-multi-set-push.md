@@ -37,7 +37,6 @@ normative:
    RFC9110:
    RFC9457:
    RFC9846:
-   RFC9728:
    RFC8259:
    RFC2277:
    RFC6838:
