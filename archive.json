@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-25T01:39:08.260742+00:00",
+  "timestamp": "2026-08-27T08:46:16.552404+00:00",
   "repo": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
   "labels": [
     {
@@ -440,6 +440,34 @@
       "mergedBy": "appsdesh",
       "mergeCommit": {
         "oid": "91b15e82dd52bc13793bab1ebf7df2598c63cf03"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOPuUGn88AAAABA_D8cA",
+      "title": "Removed RFC9728 and added shephard's writeup",
+      "url": "https://github.com/appsdesh/draft-deshpande-secevent-http-multi-set-push/pull/9",
+      "state": "MERGED",
+      "author": "appsdesh",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T19:41:08Z",
+      "updatedAt": "2026-08-25T19:41:33Z",
+      "baseRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
+      "baseRefName": "main",
+      "baseRefOid": "91b15e82dd52bc13793bab1ebf7df2598c63cf03",
+      "headRepository": "appsdesh/draft-deshpande-secevent-http-multi-set-push",
+      "headRefName": "shepherd-writeup",
+      "headRefOid": "fe0c4cbb431e9e944898a0cf55f80f88fee474aa",
+      "closedAt": "2026-08-25T19:41:33Z",
+      "mergedAt": "2026-08-25T19:41:33Z",
+      "mergedBy": "appsdesh",
+      "mergeCommit": {
+        "oid": "4a66318977e298f9a6c4660392b31771cbd85d03"
       },
       "comments": [],
       "reviews": []
