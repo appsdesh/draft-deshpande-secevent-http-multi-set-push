@@ -294,7 +294,7 @@ A Transmitter should not assume the ordered processing of the SETs by the Recipi
 
 # Security Considerations {#security-considerations}
 
-The Security Considerations of {{RFC8935}}, {{RFC9846}}, and {{Section 17 of RFC9110}} apply to this specification.
+The Security Considerations of {{RFC8935}}, {{RFC9846}}, and {{RFC9110}} apply to this specification.
 
 ## Too many SETs in the request
 
@@ -313,13 +313,13 @@ The Transmitter MUST follow the procedures described in section {{authn-and-auth
 
 ## HTTP and TLS
 
-The Transmitter MUST use TLS {{RFC9846}} to communicate with the Recipient and is subject to the security considerations of HTTP {{Section 17 of RFC9110}}.
+The Transmitter MUST use TLS {{RFC9846}} to communicate with the Recipient and is subject to the security considerations of HTTP {{RFC9110}}.
 
 Failure to properly validate the Recipient's TLS certificate could allow a Transmitter to send SETs to an impersonating endpoint, resulting in the disclosure of sensitive security event information to an unauthorized party.
 
 ## Event Delivery Latency
 
-The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters MUST NOT unduly delay the transmission of events in an attempt to create larger batches.
+The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters MUST NOT unduly delay the transmission of events in an attempt to create larger batches. Likewise, Recipients SHOULD respond with an `ack` or `setErrs` for each SET as soon as possible, without unduly delaying the response.
 
 Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.
 
@@ -381,5 +381,5 @@ This section registers the `application/secevents+json` media type {{RFC6838}} i
 The authors would like to acknowledge the following individuals
 who contributed ideas, feedback, and wording that shaped and formed the final specification:
 
-Atul Tulshibagwale, Yair Sarig, Yaron Sheffer.
+Atul Tulshibagwale, Yair Sarig, Yaron Sheffer, Martin Duke, Scott Kelly, Deb Cooley.
 
