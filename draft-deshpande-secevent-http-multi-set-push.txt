@@ -5,7 +5,7 @@
 Security Events                                             A. Deshpande
 Internet-Draft                                                A. Parecki
 Intended status: Standards Track                                    Okta
-Expires: 26 February 2027                                 25 August 2026
+Expires: 12 April 2027                                    9 October 2026
 
 
 Push-Based Delivery For Multiple Security Event Tokens (SET) Using HTTP
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2027.
+   This Internet-Draft will expire on 12 April 2027.
 
 Copyright Notice
 
@@ -499,8 +499,8 @@ Table of Contents
 
 7.  Security Considerations
 
-   The Security Considerations of [RFC8935], [RFC9846], and Section 17
-   of [RFC9110] apply to this specification.
+   The Security Considerations of [RFC8935], [RFC9846], and [RFC9110]
+   apply to this specification.
 
 7.1.  Too many SETs in the request
 
@@ -537,7 +537,7 @@ Table of Contents
 
    The Transmitter MUST use TLS [RFC9846] to communicate with the
    Recipient and is subject to the security considerations of HTTP
-   Section 17 of [RFC9110].
+   [RFC9110].
 
    Failure to properly validate the Recipient's TLS certificate could
    allow a Transmitter to send SETs to an impersonating endpoint,
@@ -550,7 +550,9 @@ Table of Contents
    communication of security-sensitive information.  While this
    specification enables batching for efficiency, Transmitters MUST NOT
    unduly delay the transmission of events in an attempt to create
-   larger batches.
+   larger batches.  Likewise, Recipients SHOULD respond with an ack or
+   setErrs for each SET as soon as possible, without unduly delaying the
+   response.
 
    Delaying the transmission of a time-sensitive event, such as a
    credential compromise or session revocation, defeats the purpose of
@@ -711,7 +713,8 @@ Acknowledgments
    contributed ideas, feedback, and wording that shaped and formed the
    final specification:
 
-   Atul Tulshibagwale, Yair Sarig, Yaron Sheffer.
+   Atul Tulshibagwale, Yair Sarig, Yaron Sheffer, Martin Duke, Scott
+   Kelly, Deb Cooley.
 
 Authors' Addresses
 

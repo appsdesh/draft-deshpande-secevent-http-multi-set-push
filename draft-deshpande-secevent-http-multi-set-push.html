@@ -14,24 +14,24 @@ are transmitted in the body of an HTTP POST request to an endpoint
 operated by the recipient, and the recipient indicates successful or
 failed transmission via the HTTP response. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="security event" name="keyword">
 <meta content="secevent" name="keyword">
 <meta content="draft-deshpande-secevent-http-multi-set-push-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
-    Python 3.14.7
-    ConfigArgParse 1.7.5
+  xml2rfc 3.34.1
+    Python 3.14.8
+    ConfigArgParse 1.8.0
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.11.3
+    platformdirs 4.12.2
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.2
+    wcwidth 0.9.1
 -->
 <link href="draft-deshpande-secevent-http-multi-set-push.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1047,11 +1047,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Push-multi-SET</td>
-<td class="right">August 2026</td>
+<td class="right">October 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Deshpande &amp; Parecki</td>
-<td class="center">Expires 26 February 2027</td>
+<td class="center">Expires 12 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1064,12 @@ svg {
 <dd class="internet-draft">draft-deshpande-secevent-http-multi-set-push-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-08-25" class="published">25 August 2026</time>
+<time datetime="2026-10-09" class="published">9 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-02-26">26 February 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-12">12 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1127,7 +1127,7 @@ failed transmission via the HTTP response.<a href="#section-abstract-1" class="p
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 February 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1576,7 +1576,7 @@ it is the intended recipient of the request, before sending the SETs.<a href="#s
       <h2 id="name-security-considerations">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-7-1">The Security Considerations of <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>, <span>[<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>, and <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> apply to this specification.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">The Security Considerations of <span>[<a href="#RFC8935" class="cite xref">RFC8935</a>]</span>, <span>[<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>, and <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> apply to this specification.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <div id="too-many-sets-in-the-request">
 <section id="section-7.1">
         <h3 id="name-too-many-sets-in-the-reques">
@@ -1601,7 +1601,7 @@ it is the intended recipient of the request, before sending the SETs.<a href="#s
         <h3 id="name-http-and-tls">
 <a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-http-and-tls" class="section-name selfRef">HTTP and TLS</a>
         </h3>
-<p id="section-7.3-1">The Transmitter <span class="bcp14">MUST</span> use TLS <span>[<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> to communicate with the Recipient and is subject to the security considerations of HTTP <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+<p id="section-7.3-1">The Transmitter <span class="bcp14">MUST</span> use TLS <span>[<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> to communicate with the Recipient and is subject to the security considerations of HTTP <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
 <p id="section-7.3-2">Failure to properly validate the Recipient's TLS certificate could allow a Transmitter to send SETs to an impersonating endpoint, resulting in the disclosure of sensitive security event information to an unauthorized party.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1610,7 +1610,7 @@ it is the intended recipient of the request, before sending the SETs.<a href="#s
         <h3 id="name-event-delivery-latency">
 <a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-event-delivery-latency" class="section-name selfRef">Event Delivery Latency</a>
         </h3>
-<p id="section-7.4-1">The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters <span class="bcp14">MUST NOT</span> unduly delay the transmission of events in an attempt to create larger batches.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+<p id="section-7.4-1">The primary purpose of security event tokens is the timely communication of security-sensitive information. While this specification enables batching for efficiency, Transmitters <span class="bcp14">MUST NOT</span> unduly delay the transmission of events in an attempt to create larger batches. Likewise, Recipients <span class="bcp14">SHOULD</span> respond with an <code>ack</code> or <code>setErrs</code> for each SET as soon as possible, without unduly delaying the response.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
 <p id="section-7.4-2">Delaying the transmission of a time-sensitive event, such as a credential compromise or session revocation, defeats the purpose of the protocol and provides an adversary with a larger window of opportunity to act.<a href="#section-7.4-2" class="pilcrow">¶</a></p>
 <p id="section-7.4-3">It is <span class="bcp14">RECOMMENDED</span> that Transmitters implement a batching policy that sends a pending batch of SETs when either of the following conditions is met:<a href="#section-7.4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1807,7 +1807,7 @@ it is the intended recipient of the request, before sending the SETs.<a href="#s
       </h2>
 <p id="appendix-A-1">The authors would like to acknowledge the following individuals
 who contributed ideas, feedback, and wording that shaped and formed the final specification:<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">Atul Tulshibagwale, Yair Sarig, Yaron Sheffer.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Atul Tulshibagwale, Yair Sarig, Yaron Sheffer, Martin Duke, Scott Kelly, Deb Cooley.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
